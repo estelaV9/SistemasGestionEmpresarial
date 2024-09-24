@@ -118,9 +118,9 @@ Desde la página del evento, también se puede gestionar las inscripciones y ven
 Se pueden configurar diferentes **tipos de entradas y gestionar el pago**. El cuál, después de rellenar los datos, generará un _**pdf**_ con sus entradas.<br>
 
 
-Inicio                               | Sobre Nosotros                                       			                    
-:------------------------------------------:|:-------------------------------------------:|
- <img src="myFiles/inicio.png" width="300"> | <img src="myFiles/sobreNosotros.png" width="250">  
+Inicio                               | Sobre Nosotros                                     | Twitter     			                    
+:------------------------------------------:|:-------------------------------------------:|:-------------------------------------------:|
+ <img src="myFiles/inicio.png" width="300"> | <img src="myFiles/sobreNosotros.png" width="250"> | <a href="https://x.com/PolleriaPollos"><img src="myFiles/twitter.png" width="350"> </a>
 
  Tienda                           |  Eventos                             
 :-----------------------------------------:|:--------------------------------------------:|
