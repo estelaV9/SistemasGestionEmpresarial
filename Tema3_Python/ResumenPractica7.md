@@ -1,5 +1,5 @@
 # Práctica 7: Ejercicios Iniciales de Python
-## Ejercicio 0
+## <a href="https://github.com/estelaV9/SistemasGestionEmpresarial/tree/master/Tema3_Python/Python_SGE/00sintaxis">Ejercicio 0</a>
 1. Sintaxis y variables.
 ``` python
   my_string = "My String"; # CREAR UNA CADENA DE TEXTO
@@ -34,7 +34,7 @@
      print(type(my_string))
      ```
 
-## Ejercicio 1
+## <a href="https://github.com/estelaV9/SistemasGestionEmpresarial/blob/master/Tema3_Python/Python_SGE/01operadores/operadores.py">Ejercicio 1</a>
 1. print(f"Suma: 8 + 14 = {8 + 14}")
 Esa linea permiten incluir expresiones directamente dentro de una cadena, 
 que serán evaluadas y sustituidas en el momento de la ejecución.
@@ -88,7 +88,7 @@ que serán evaluadas y sustituidas en el momento de la ejecución.
         z %= 3  # MODULO Y ASIGNA
         print(f"z %= 3 -> {z}")
      ```
-   4. Calculadora
+4. <a href="https://github.com/estelaV9/SistemasGestionEmpresarial/blob/master/Tema3_Python/Python_SGE/01operadores/calculadora.py">Calculadora</a>
    Pedir por teclado 2 números y muestre por pantalla estas operaciones aritméticas:
     - Suma.
     - Resta.
@@ -111,7 +111,7 @@ que serán evaluadas y sustituidas en el momento de la ejecución.
          f"\nResto: {num_one % num_two}") 
     ```
     
-## Ejercicio 2
+## <a href="https://github.com/estelaV9/SistemasGestionEmpresarial/blob/master/Tema3_Python/Python_SGE/02estructuras_control/condicionales.py">Ejercicio 2</a>
 1. Hacer un print con la estructura if
 ``` python
 print("*********** ESTRUCTURA IF-ELSE **********")
@@ -122,7 +122,7 @@ else:
    print(f"El número " + str(number) + " es positivo") 
 ```
 
-3. Hacer un print con la estructura case
+2. Hacer un print con la estructura case
 ``` python
 # HACER UN PRINT CON LA ESTRUCTURA CASE
 print("\n*********** ESTRUCTURA CASE **********")
@@ -145,7 +145,7 @@ def dias_de_la_semana(day):
 print("El dia de la semana es: " , dias_de_la_semana(day)) 
 ```
   
-5. Hacer un print con un bucle for
+3. Hacer un print con un <a href="https://github.com/estelaV9/SistemasGestionEmpresarial/blob/master/Tema3_Python/Python_SGE/02estructuras_control/bucles.py">bucle</a> for
 ``` python
 # HACER UN PRINT CON LA ESTRUCTURA ITERATIVA FOR
 print("*********** ESTRUCTURA FOR **********")
@@ -153,7 +153,7 @@ for i in range(1, 11): # range(1, 11) genera los números del 1 al 10
     print(i)
 ```
 
-6. Hacer un print con un bucle while
+4. Hacer un print con un bucle while
 ``` python
 # HACER UN PRINT CON LA ESTRUCTURA ITERATIVA FOR
 print("\n*********** ESTRUCTURA WHILE **********")
