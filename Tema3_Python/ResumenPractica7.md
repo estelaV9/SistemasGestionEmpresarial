@@ -1,6 +1,6 @@
 # Práctica 7: Ejercicios Iniciales de Python
-## <a href="https://github.com/estelaV9/SistemasGestionEmpresarial/tree/master/Tema3_Python/Python_SGE/00sintaxis">Ejercicio 0</a>
-1. Sintaxis y variables.
+## Ejercicio 0: <a href="https://github.com/estelaV9/SistemasGestionEmpresarial/blob/master/Tema3_Python/Python_SGE/00sintaxis/sintaxis_variables.py">Sintaxis y variables</a>
+1. Sintaxis y variables
 ``` python
   my_string = "My String"; # CREAR UNA CADENA DE TEXTO
   my_number = 12; # CREAR UN NUMERO ENTERO
@@ -34,7 +34,7 @@
      print(type(my_string))
      ```
 
-## <a href="https://github.com/estelaV9/SistemasGestionEmpresarial/blob/master/Tema3_Python/Python_SGE/01operadores/operadores.py">Ejercicio 1</a>
+## Ejercicio 1: <a href="https://github.com/estelaV9/SistemasGestionEmpresarial/blob/master/Tema3_Python/Python_SGE/01operadores/operadores.py">Operadores</a>
 1. print(f"Suma: 8 + 14 = {8 + 14}")
 Esa linea permiten incluir expresiones directamente dentro de una cadena, 
 que serán evaluadas y sustituidas en el momento de la ejecución.
@@ -111,7 +111,7 @@ que serán evaluadas y sustituidas en el momento de la ejecución.
          f"\nResto: {num_one % num_two}") 
     ```
     
-## <a href="https://github.com/estelaV9/SistemasGestionEmpresarial/blob/master/Tema3_Python/Python_SGE/02estructuras_control/condicionales.py">Ejercicio 2</a>
+## Ejercicio 2: <a href="https://github.com/estelaV9/SistemasGestionEmpresarial/blob/master/Tema3_Python/Python_SGE/02estructuras_control/condicionales.py">Estructuras de control</a>
 1. Hacer un print con la estructura if
 ``` python
 print("*********** ESTRUCTURA IF-ELSE **********")
@@ -163,6 +163,25 @@ while(number != 1):
     number = int(input())
 print("Hasta pronto!")
 ```
+
+
+## Ejercicio 3: <a href="https://github.com/estelaV9/SistemasGestionEmpresarial/tree/master/Tema3_Python/Python_SGE/03funciones">Funciones</a>
+1. <a href="https://github.com/estelaV9/SistemasGestionEmpresarial/blob/master/Tema3_Python/Python_SGE/03funciones/funciones.py">Explicación</a> sobre las funciones en **Python**.
+``` python
+  def greet():
+      print("Holaa!!, bienvenidos al curso 24/25") 
+  greet()
+```
+2. Ejercicio <a href="https://github.com/estelaV9/SistemasGestionEmpresarial/blob/master/Tema3_Python/Python_SGE/03funciones/fizz_buzz.py">fizz_buzz</a> que según el módulo de 3/5 o los dos muestre un parámetro y otro, o los dos.
+
+## Ejercicio 4: <a href="https://github.com/estelaV9/SistemasGestionEmpresarial/tree/master/Tema3_Python/Python_SGE/04estructuras_datos">Estructuras de Datos</a>
+1. <a href="https://github.com/estelaV9/SistemasGestionEmpresarial/blob/master/Tema3_Python/Python_SGE/04estructuras_datos/agenda_contactos_mejorada.py">Agenda mejorada</a> de contactos.
+2. Funcionamiento de <a href="https://github.com/estelaV9/SistemasGestionEmpresarial/blob/master/Tema3_Python/Python_SGE/04estructuras_datos/listas.py">listas</a>.
+   - Insercción.
+   - Borrado.
+   - Actualización.
+   - Ordenación.
+
 
 
 
