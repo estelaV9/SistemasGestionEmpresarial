@@ -1,4 +1,4 @@
-""" permiten incluir expresiones directamente dentro de una cadena, 
+""" Interpolación: f-strings permiten incluir variables directamente dentro de una cadena, 
 que serán evaluadas y sustituidas en el momento de la ejecución. """
 print(f"Suma: 8 + 14 = {8 + 14}")
 
