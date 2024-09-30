@@ -12,10 +12,13 @@ print(tupla) # (1, 2, 3)
 tupla = 1, 2, 3 # se puede declarar sin ()
 print(tupla)
 
-# BORRADO
-
-
-# ACTUALIZACION
-
 
 # ORDENACION
+""" se puede ordenar con al funcion sorted (devuelve una lista) """
+ # SI NO QUEREMOS QUE SE CONVIERTA EN UNA LISTA PONEMOS tuple() PARA QUE LO VUELVA A CONVERTIR EN TUPLA
+tupla = tuple(sorted(tupla))
+print(tupla)
+print(type(tupla)) # SE CONVIERTE EN UNA LISTA SI NO TIENE ELMETODO tuple()
+
+
+# NO SE PUEDE MODIFICAR
