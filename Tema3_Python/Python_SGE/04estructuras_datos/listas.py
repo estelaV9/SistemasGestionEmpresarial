@@ -20,6 +20,13 @@ index = my_list_example.index(name_original)
 my_list_example[index] = new_name
 print("Se actualizo correctamente")
 
+""" otra forma """
+my_list_example[1]
+print(my_list_example[1])
+my_list_example[1] = "Pedro"
+print(my_list_example)
+
 # ORDENACION
-for i in range (0, len(my_list_example)):
-    print(my_list_example[i])
+my_list_example.sort() # POR DEFECTO LO ORDENA ALFABETICAMENTE
+print(my_list_example)
+print(type(my_list_example)) # AÑADIR EL TIPO DE CLASE 
