@@ -9,8 +9,8 @@ LA FUNCION RETORNARA EL NUMERO DE VECES QUE SE HA IMPRESO EL NUMERO
 EN LUEGAR DE LOS TEXTOS"""
 def return_number(text_one, text_two):
     contador = 0
-    for i in range(1, 100):
-        if i% 5 == 0 and i % 3 == 0:
+    for i in range(1, 101): # SE PONE UN NUMERO MAS
+        if i % 5 == 0 and i % 3 == 0:
             print(f"{text_one}_{text_two}")
         elif i % 5 == 0:
             print(text_two)
