@@ -22,7 +22,7 @@ Si el archivo lo hubiesemos llamado nombre_random, daria error"""
 # IMPORTAR LIBRERIA
 import math
 result = math.sqrt(5)
-print(resultado)
+print(result)
 
 # IMPORTAR SOLO UNA FUNCION
 from math import sqrt
