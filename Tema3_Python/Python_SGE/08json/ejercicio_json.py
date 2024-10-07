@@ -9,6 +9,7 @@ Elementos clave de JSON:
  - Claves: Siempre deben ser cadenas y deben estar entre comillas dobles.
 
 Características de JSON:
+ - Formato de texto: es solo texto, lo que hace que sea facil de feer y escribir
  - De fácil lectura.
  - Soporta estructuras anidadas (objetos dentro de objetos, array dentro de objetos, etc.).
  - Suele ser aplicado más comúnmente en un entorno web, donde recibir datos entre cliente y servidor.
@@ -18,3 +19,22 @@ Usos principales de JSON:
  - Almacenamiento de configuración y datos en aplicaciones.
  - Intercambio de datos entre lenguajes de programación diferentes. """
  
+# EJERCICIO QUE GUARDE LOS DATOS (nombre, edad, fechaNacimiento, modulos [lista de cadenas])
+import json # IMPORTARLO
+import os    
+data = {
+     "nombre": "Eduardo",
+     "edad": 23,
+     "fecha_nacimiento": "12-02-2004",
+     "modulos": ["Java", "Kotlin", "Python"]
+}
+
+json_file = "prueba.json"
+with open(json_file, "w") as json_data:
+    json.dump(data, json_data) # dump CONVIERTE EL DICCIONARIO EN FORMATO JSON Y LO ESCRIBE 
+    
+with open(json_file, "r") as json_data:
+    print(json_data.read())
+
+print("Borrando el fichero json")
+os.remove(json_file)
