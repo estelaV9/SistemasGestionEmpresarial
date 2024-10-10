@@ -26,15 +26,15 @@ La librería de Python para realizar peticiones HTTP es `requests`. Para ello in
 import requests
 
 # REALIZAR UNA PETICIÓN GET PARA OBTENER UNA PAGINA WEB
-url = "https://github.com/estelaV9"  # IR A MI GITHUB
+url = "https://github.com/estelaV9"
 
 try:
     x = requests.get(url)
     
-    # SE VERIFICA QUE LA PETICION FUESE EXITOSA
+    # UNA PETICION HTTP DEVUELVE UNA RESPUESTA (codigo HTTP). SE VERIFICA QUE LA PETICION FUESE EXITOSA
     if x.status_code == 200:
         print("La petición fue exitosa. Contenido de la web:")
-        print(x.text)  # MOSTRAR EL CONTENIDO DE LA RESPUES
+        print(x.text)  # DEVUELVE EL CODIGO FUENTE DE LA WEB; SE PODRIA VER REPRESENTADA
     else:
         print(f"La petición no tuvo éxito. Código de error: {x.status_code}")
 
