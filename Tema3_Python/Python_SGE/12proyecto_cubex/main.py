@@ -4,9 +4,9 @@ CURSO: 24/25
 ASIGNATURA: Sistemas de Gestión Empresarial """
 
 try:
-    opcion = -1
+    option = -1
     print("¡Bienvenido a CubeX! ¿Qué desea hacer en nuestra tienda?")
-    while (opcion != 0):
+    while option != 0:
         print("**** MENU ****",
           "\n1 - Ver todos los productos disponibles.",
           "\n2 - Ver tus productos.",
@@ -14,9 +14,9 @@ try:
           "\n4 - Modificar productos",
           "\n5 - Eliminar productos",
           "\n0 - Salir de la tienda.")
-        opcion = int(input("Introduzca la opción: "))
+        option = int(input("Introduzca la opción: "))
 
-        match opcion:
+        match option:
             case 1:
                 print("********** PRODUCTOS EN TIENDA **********")
             case 2:
@@ -31,8 +31,6 @@ try:
                 print("Gracias por visitar nuetra tienda.")
             case _:
                 print("Opción no válida.")
-        
-    print(opcion)
 except Exception as e:
     print(f"Ocurrió un error: {e}")
 print("¡Vuelva pronto!")
