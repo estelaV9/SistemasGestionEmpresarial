@@ -32,7 +32,7 @@ try:
 
         match option:
             case 1:
-                print("********** PRODUCTOS EN TIENDA **********")
+                product.devolver_productos(list_cube)
             case 2:
                 print("********** TUS PRODUCTOS **********")
             case 3:
