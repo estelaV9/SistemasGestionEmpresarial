@@ -2,7 +2,7 @@
 REALIZADO POR: Estela de Vega Martin 2DAM 
 CURSO: 24/25
 ASIGNATURA: Sistemas de Gestión Empresarial """
-from product import product
+from model.product import product
 
 try:
     option = -1
