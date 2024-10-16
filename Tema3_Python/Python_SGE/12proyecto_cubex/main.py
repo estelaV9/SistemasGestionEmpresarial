@@ -64,6 +64,7 @@ try:
                 print("********** COMPRAR PRODUCTOS **********")
             case 4:
                 print("********** CREAR PRODUCTOS **********")
+                product_dao.create_product(user_dao.search_name(email))
             case 5:
                 print("********** MODIFICAR PRODUCTOS **********")
             case 6:
