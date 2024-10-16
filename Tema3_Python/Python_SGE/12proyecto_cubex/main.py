@@ -40,7 +40,10 @@ try:
         email = input("Email: ")
         password = input("Contraseña: ")
         new_user = user(email, password, name_user)
-        user_dao.create_user(new_user)
+        if user_dao.create_user(new_user):
+            print("Creación de cuenta exitosa")
+        else:
+            print("Ya tienes una cuenta, inicia sesión para entrar a nuestra tienda")
 
     print("¡Bienvenido a CubeX! ¿Qué desea hacer en nuestra tienda?")
     while option != 0:
