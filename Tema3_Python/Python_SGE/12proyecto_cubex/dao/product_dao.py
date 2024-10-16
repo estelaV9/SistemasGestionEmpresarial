@@ -3,46 +3,47 @@ from json import JSONDecodeError
 
 from model.product import product
 from dao import user_dao
-
+# meter lambda para validar positivos
+# filtrar listas
+def leer_archivo():
+    try:
+        with open('product.json', 'r') as file:
+            products = json.load(file) # GUARDAR TODOS LOS PRODUCTOS EN UNA LISTA
+    except (FileNotFoundError, JSONDecodeError):
+        # SI NO SE HA ENCONTRADO ARCHIVO, INCIAR LA LISTA EN NULO
+        products = []
+    return products
 
 # FUNCION PARA LISTAR TODOS LOS PRODUCTOS
 def list_product():
-    try:
-        with open('product.json', 'r') as file:
-            products = json.load(file)
-    except FileNotFoundError:
-        # SI NO SE HA ENCONTRADO ARCHIVO, INCIAR LA LISTA EN NULO
-        products = []
-
+    products = leer_archivo()
+    # SI NO ES NULO APARECERA LA INFORMACION DEL PRODUCTO, SI NO UN MENSAJE DE QUE NO HAY PRODUCTOS
     if products:
+        # RECORRER LA LISTA
         for product in products:
-            print(product.__str__())
+            print(product.__str__()) # IMPRIMIR LOS DATOS
     else:
         print("No hay productos disponibles")
 
 
 # FUNCION PARA LISTAR LOS PRODUCTOS DE UN USUARIO
 def list_product_user(user_name):
-    try:
-        with open('product.json', 'r') as file:
-            products = json.load(file)
-    except FileNotFoundError:
-        # SI NO SE HA ENCONTRADO ARCHIVO, INCIAR LA LISTA EN NULO
-        products = []
-    except JSONDecodeError:
-        # SI EL JSON ESTA VACIO, INICIAR LA LISTA EN NULO
-        products = []
-
-    for product in products:
-        if product['owner'] == user_name:
-            print(product.__str__())
+    products = leer_archivo()
+    # SI NO ES NULO APARECERA LA INFORMACION DEL PRODUCTO, SI NO UN MENSAJE DE QUE NO HAY PRODUCTOS
+    if products:
+        # RECORRER LA LISTA
+        for product in products:
+            if product['owner'] == user_name:
+                print(product.__str__()) # IMPRIMIR LOS DATOS
+    else:
+        print(f"No hay productos disponibles del usuario {user_name}")
 
 
 # FUNCION PARA CREAR UN PRODUCTO
 def create_product(email):
     product_name = input("Nombre del producto: ")
     product_price = input("Precio del producto: ")
-    stock = input("Stock disponible: ")
+    stock = int(input("Stock disponible: "))
     categoria = input("Categoria del cubo: ")
     new_product = product(product_name, product_price, stock, categoria, email)
 
@@ -60,8 +61,7 @@ def create_product(email):
 
 # FUNCION PARA ELIMINAR PRODUCTO POR NOMBRE
 def delete_product(product_name):
-    with open('product.json', 'r') as file:
-        list_product_delete = json.load(file)  # GUARDAR TODOS LOS PRODUCTOS EN LISTA
+    list_product_delete = leer_archivo()
     # BUSCAR NOMBRE PRODUCTO
     product_found = False  # SABER SI EL PRODUCTO EXISTE O NO
 
@@ -82,8 +82,7 @@ def delete_product(product_name):
 
 # FUNCION PARA MODIFICAR UN PRODUCTO POR SU NOMBRE
 def modify_product(product_name):
-    with open('product.json', 'r') as file:
-        product_list = json.load(file)  # GUARDAR TODOS LOS PRODUCTOS EN UNA LISTA
+    product_list = leer_archivo()
 
     # BUSCAR NOMRBE PRODUCTO
     product_found = False  # SABER SI SE HA ENCONTRADO EL PRODUCTO
@@ -116,8 +115,7 @@ def modify_product(product_name):
 
 # FUNCION PARA COMPRAR PRODUCTO
 def buy_product(product_name):
-    with open('product.json', 'r') as file:
-        product_list = json.load(file)  # GUARDAR TODOS LOS PRODUCTOS EN UNA LISTA
+    product_list = leer_archivo()
 
     # BUSCAR NOMRBE PRODUCTO
     product_found = False  # SABER SI SE HA ENCONTRADO EL PRODUCTO
