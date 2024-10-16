@@ -16,3 +16,18 @@ def list_product():
 
     for product in products:
         print(product.__str__())
+
+def list_product_user(user_name):
+    try:
+        with open('product.json', 'r') as file:
+            products = json.load(file)
+    except FileNotFoundError:
+        # SI NO SE HA ENCONTRADO ARCHIVO, INCIAR LA LISTA EN NULO
+        products = []
+    except JSONDecodeError:
+        # SI EL JSON ESTA VACIO, INICIAR LA LISTA EN NULO
+        products = []
+
+    for product in products:
+        if product['owner'] == user_name:
+            print(product.__str__())

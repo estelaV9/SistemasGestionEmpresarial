@@ -59,6 +59,7 @@ try:
                 product_dao.list_product()
             case 2:
                 print("********** TUS PRODUCTOS **********")
+                product_dao.list_product_user(user_dao.search_name(email))
             case 3:
                 print("********** COMPRAR PRODUCTOS **********")
             case 4:

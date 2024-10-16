@@ -41,3 +41,14 @@ def log_in (user_obj: user):
             return True
 
     return False # SI NO HA ENCONTRADO USUARIO DEVOLVERA FALSE
+
+# FUNCION PARA BUSCAR EL NOMBRE DEL USUARIO A PARTIR DEL EMAIL
+def search_name (email):
+    with open ('users.json', 'r') as file:
+        list_user = json.load(file)
+
+    # SE RECORRE LA LISTA PARA ENCONTRAR AL USUARIO Y RETORNAR EL NOMBRE
+    for user in list_user:
+        if user['Email'] == email:
+            print(user['Name'])
+            return user['Name']
