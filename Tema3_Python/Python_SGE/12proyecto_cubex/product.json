@@ -47,12 +47,5 @@
         "stock": 6,
         "categoria": "Skewb",
         "owner": "c"
-    },
-    {
-        "nombre": "a",
-        "precio": "2",
-        "stock": "2",
-        "categoria": "3x3",
-        "owner": "a"
     }
 ]

@@ -53,3 +53,23 @@ def create_product (email):
         json.dump(list_product_create, file, indent=4)  # Indent para mejor legibilidad
 
     print("Se ha creado el producto exitosamente")
+
+def delete_product(product_name):
+    with open('product.json', 'r') as file:
+        list_product_delete = json.load(file) # GUARDAR TODOS LOS PRODUCTOS EN LISTA
+    # BUSCAR NOMBRE PRODUCTO
+    product_found = False # SABER SI EL PRODUCTO EXISTE O NO
+
+    for product in list_product_delete:
+        if product['nombre'] == product_name:  # SI HAY UN PRODUCTO CON ESE NOMBRE SE ELIMINA
+            list_product_delete.remove(product)  # ELIMINAR EL PRODUCTO DE LA LISTA
+            product_found = True
+            break  # SALIR DEL BUCLE
+
+    if product_found:
+        # SE GUARDA LA LISTA ACTUALIZADA DE VUELTA EN EL JSON
+        with open('product.json', 'w') as file:
+            json.dump(list_product_delete, file, indent=4)
+        print(f"Producto '{product_name}' eliminado exitosamente.")
+    else:
+        print(f"No se encontró el producto '{product_name}'.")

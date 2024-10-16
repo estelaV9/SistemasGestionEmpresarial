@@ -26,7 +26,7 @@ try:
                 print("No se ha encontrado usuario. Por favor, pruebe con otro usuario o crease una cuenta.")
             else:
                 print("Inicio de sesión exitosa")
-                break # SALE DEL BUCLE SI SE HA INICIADO SESION CORRECTAMENTE Y ENTRA EN LA TIENDA
+                break  # SALE DEL BUCLE SI SE HA INICIADO SESION CORRECTAMENTE Y ENTRA EN LA TIENDA
 
         elif metodo_login == 2:
             print("******** CREAR UNA CUENTA ********")
@@ -36,7 +36,7 @@ try:
             new_user = user(email, password, name_user)
             if user_dao.create_user(new_user):
                 print("Creación de cuenta exitosa")
-                break # SALE DEL BUCLE SI SE HA CREADO CUENTA CORRECTAMENTE Y ENTRA EN LA TIENDA
+                break  # SALE DEL BUCLE SI SE HA CREADO CUENTA CORRECTAMENTE Y ENTRA EN LA TIENDA
             else:
                 print("Ya tienes una cuenta, inicia sesión para entrar a nuestra tienda")
 
@@ -44,13 +44,13 @@ try:
     print("\n\n¡Bienvenido a CubeX! ¿Qué desea hacer en nuestra tienda?")
     while option != 0:
         print("\n**** MENU ****",
-          "\n1 - Ver todos los productos disponibles.",
-          "\n2 - Ver tus productos.",
-          "\n3 - Comprar productos",
-          "\n4 - Crear productos",
-          "\n5 - Modificar productos",
-          "\n6 - Eliminar productos",
-          "\n0 - Salir de la tienda.")
+              "\n1 - Ver todos los productos disponibles.",
+              "\n2 - Ver tus productos.",
+              "\n3 - Comprar productos",
+              "\n4 - Crear productos",
+              "\n5 - Modificar productos",
+              "\n6 - Eliminar productos",
+              "\n0 - Salir de la tienda.")
         option = int(input("Introduzca la opción: "))
 
         match option:
@@ -69,6 +69,8 @@ try:
                 print("********** MODIFICAR PRODUCTOS **********")
             case 6:
                 print("********** ELIMINAR PRODUCTOS **********")
+                product_name = input("Introducta el producto que quieras eliminar: ")
+                product_dao.delete_product(product_name)
             case 0:
                 print("Gracias por visitar nuetra tienda.")
             case _:
