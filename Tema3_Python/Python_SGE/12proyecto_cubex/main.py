@@ -94,10 +94,9 @@ def apartado_usuario():
         match option:
             case 1:
                 print("********** TODOS LOS USUARIO **********")
-                product_dao.list_product()
+                user_dao.list_user()
             case 2:
                 print("********** TU INFORMACION **********")
-                product_dao.list_product_user(user_dao.search_name(email))
             case 3:
                 print("********** MODIFICAR DATOS DEL USUARIO **********")
             case 4:

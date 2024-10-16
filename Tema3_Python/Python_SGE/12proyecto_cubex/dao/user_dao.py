@@ -1,4 +1,5 @@
 import json
+from json import JSONDecodeError
 
 from model import user
 
@@ -70,3 +71,18 @@ def delete_user(user_name):
 
     print(f"Usuario '{user_name}' se ha eliminado exitosamente.")
 
+# FUNCION PARA IMPRIMIR TODOS LOS USUARIOS
+def list_user():
+    try:
+        with open('users.json', 'r') as file:
+            list_user_show = json.load(file) # GUARDAR LOS USUARIOS
+    except FileNotFoundError:
+        # SI NO SE HA ENCONTRADO ARCHIVO, INCIAR LA LISTA EN NULO
+        list_user_show = []
+    except JSONDecodeError:
+        # SI EL JSON ESTA VACIO, INICIAR LA LISTA EN NULO
+        list_user_show = []
+
+    # RECORRER LA LISTA Y MOSTRARLOS
+    for user in list_user_show:
+        print(user.__str__())
