@@ -39,6 +39,7 @@ def method_signup():
 # METODO QEU CONTIENE EL APARTADO DE PRODUCTOS
 def apartado_productos():
     # APARTADO CUBOS
+    option = -1
     while option != 0:
         print("\n**** MENU ****",
               "\n1 - Ver todos los productos disponibles.",
@@ -80,6 +81,7 @@ def apartado_productos():
 
 # METODO QUE CONTIENE EL APARTADO DE USUARIO
 def apartado_usuario():
+    option = -1
     while option != 0:
         print("\n**** MENU ****",
               "\n1 - Ver todos los usuarios de la tienda.",
@@ -98,11 +100,9 @@ def apartado_usuario():
                 product_dao.list_product_user(user_dao.search_name(email))
             case 3:
                 print("********** MODIFICAR DATOS DEL USUARIO **********")
-                product_name = input("Introducta el producto que quieras comprar: ")
-                product_dao.buy_product(product_name)
             case 4:
                 print("********** ELIMINAR USUARIO **********")
-                product_dao.create_product(user_dao.search_name(email))
+                user_dao.delete_user(user_dao.search_name(email))
             case 0:
                 print("Gracias por visitar nuetra tienda.")
             case _:
@@ -110,7 +110,6 @@ def apartado_usuario():
 
 
 try:
-    option = -1
     # INICIAR SESION
     while True:
         print("¿Cómo quieres entrar a nuestra tienda?\n1-Iniciando sesión\n2-Creando una cuenta")

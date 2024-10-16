@@ -52,3 +52,21 @@ def search_name (email):
         if user['Email'] == email:
             print(user['Name'])
             return user['Name']
+
+
+# FUNCION PARA ELIMINAR USUARIO
+def delete_user(user_name):
+    with open('users.json', 'r') as file:
+        list_user = json.load(file) # GUARDAR LOS USUARIOS
+
+    for users in list_user:
+        # SI EL NOMBRE DE USUARIO ES EL INTRODUCIDO SE ELIMINARA
+        if users['Name'] == user_name:
+            list_user.remove(users) # SE ELIMINA EL USUARIO
+            break # SE SALE DEL BUCLE
+
+    with open('users.json', 'w') as file:
+        json.dump(list_user, file, indent=4)
+
+    print(f"Usuario '{user_name}' se ha eliminado exitosamente.")
+
