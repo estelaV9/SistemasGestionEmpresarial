@@ -62,6 +62,8 @@ try:
                 product_dao.list_product_user(user_dao.search_name(email))
             case 3:
                 print("********** COMPRAR PRODUCTOS **********")
+                product_name = input("Introducta el producto que quieras comprar: ")
+                product_dao.buy_product(product_name)
             case 4:
                 print("********** CREAR PRODUCTOS **********")
                 product_dao.create_product(user_dao.search_name(email))

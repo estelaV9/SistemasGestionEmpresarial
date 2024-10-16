@@ -4,6 +4,7 @@ from json import JSONDecodeError
 from model.product import product
 from dao import user_dao
 
+
 # FUNCION PARA LISTAR TODOS LOS PRODUCTOS
 def list_product():
     try:
@@ -18,6 +19,7 @@ def list_product():
 
     for product in products:
         print(product.__str__())
+
 
 # FUNCION PARA LISTAR LOS PRODUCTOS DE UN USUARIO
 def list_product_user(user_name):
@@ -35,8 +37,9 @@ def list_product_user(user_name):
         if product['owner'] == user_name:
             print(product.__str__())
 
+
 # FUNCION PARA CREAR UN PRODUCTO
-def create_product (email):
+def create_product(email):
     product_name = input("Nombre del producto: ")
     product_price = input("Precio del producto: ")
     stock = input("Stock disponible: ")
@@ -44,22 +47,23 @@ def create_product (email):
     new_product = product(product_name, product_price, stock, categoria, email)
 
     with open('product.json', 'r') as file:
-        list_product_create = json.load(file) # GUARDAR TODOS LOS PRODUCTOS EN LISTA
+        list_product_create = json.load(file)  # GUARDAR TODOS LOS PRODUCTOS EN LISTA
 
     product_data = new_product.to_dict()
-    list_product_create.append(product_data) # GUARDAR EL NUEVO PRODUCTO EN FORMA DE DICCIONARIO EN LA LISTA
+    list_product_create.append(product_data)  # GUARDAR EL NUEVO PRODUCTO EN FORMA DE DICCIONARIO EN LA LISTA
 
     with open('product.json', 'w') as file:
         json.dump(list_product_create, file, indent=4)  # Indent para mejor legibilidad
 
     print("Se ha creado el producto exitosamente")
 
+
 # FUNCION PARA ELIMINAR PRODUCTO POR NOMBRE
 def delete_product(product_name):
     with open('product.json', 'r') as file:
-        list_product_delete = json.load(file) # GUARDAR TODOS LOS PRODUCTOS EN LISTA
+        list_product_delete = json.load(file)  # GUARDAR TODOS LOS PRODUCTOS EN LISTA
     # BUSCAR NOMBRE PRODUCTO
-    product_found = False # SABER SI EL PRODUCTO EXISTE O NO
+    product_found = False  # SABER SI EL PRODUCTO EXISTE O NO
 
     for product in list_product_delete:
         if product['nombre'] == product_name:  # SI HAY UN PRODUCTO CON ESE NOMBRE SE ELIMINA
@@ -75,15 +79,16 @@ def delete_product(product_name):
     else:
         print(f"No se encontró el producto '{product_name}'.")
 
+
 # FUNCION PARA MODIFICAR UN PRODUCTO POR SU NOMBRE
 def modify_product(product_name):
     with open('product.json', 'r') as file:
-        product_list = json.load(file) # GUARDAR TODOS LOS PRODUCTOS EN UNA LISTA
+        product_list = json.load(file)  # GUARDAR TODOS LOS PRODUCTOS EN UNA LISTA
 
     # BUSCAR NOMRBE PRODUCTO
     product_found = False  # SABER SI SE HA ENCONTRADO EL PRODUCTO
     for product in product_list:
-        if product['nombre'] == product_name: # SI HAY UN PRODUCTO CON ESE NOMBRE SE MODIFICA
+        if product['nombre'] == product_name:  # SI HAY UN PRODUCTO CON ESE NOMBRE SE MODIFICA
             product_found = True
 
             # SE SOLICITA LOS NUEVOS DATOS PARA EL PRODUCTO
@@ -107,3 +112,35 @@ def modify_product(product_name):
         print(f"Producto '{product_name}' modificado exitosamente.")
     else:
         print(f"No se encontró el producto '{product_name}'.")
+
+
+# FUNCION PARA COMPRAR PRODUCTO
+def buy_product(product_name):
+    with open('product.json', 'r') as file:
+        product_list = json.load(file)  # GUARDAR TODOS LOS PRODUCTOS EN UNA LISTA
+
+    # BUSCAR NOMRBE PRODUCTO
+    product_found = False  # SABER SI SE HA ENCONTRADO EL PRODUCTO
+    stock_disponible = True  # SABER SI HAY STOCK DISPONIBLE
+
+    for product in product_list:
+        if product['nombre'] == product_name:  # SI HAY UN PRODUCTO CON ESE NOMBRE
+            product_found = True
+
+            # SI EL STOCK NO ES CERO SE MODIFICA EL STOCK
+            if product['stock'] != 0:
+                new_stock = product['stock'] - 1  # SE LE RESTA 1 AL STOCK
+                product['stock'] = int(new_stock)  # SE MODIFICA EL STOCK
+                break
+            else:
+                stock_disponible = False  # SI NO HAY STOCK DEVUELVE FALSE
+
+    if product_found and stock_disponible:  # SI EXISTE ESE PRODUCTO Y HAY STOCK DISPONIBLE ENTONCES SE GUARDA
+        # SE GUARDA LA LISTA ACTUALIZADA DE VUELTA AL JSON
+        with open('product.json', 'w') as file:
+            json.dump(product_list, file, indent=4)
+        print(f"Producto '{product_name}' comprado exitosamente.")
+    elif not stock_disponible:  # SI NO HAY STOCK DISPONIBLE SALTA UN MENSAJE
+        print("No hay stock disponible.")
+    elif not product_found:  # SI ESE PRODUCTO NO EXISTE, SALTA UN MENSAJE
+        print(f"No se encontró el producto '{product_name}'")
