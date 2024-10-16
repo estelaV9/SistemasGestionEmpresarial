@@ -2,7 +2,9 @@
 REALIZADO POR: Estela de Vega Martin 2DAM 
 CURSO: 24/25
 ASIGNATURA: Sistemas de Gestión Empresarial """
+from dao import user_dao
 from model.product import product
+from model.user import user
 
 try:
     option = -1
@@ -17,6 +19,19 @@ try:
     cube6 = product("ShengShou Megaminx", 14.99, 4, "Megaminx")
     cube7 = product("X-Man Bell Magnetic Skewb", 17.99, 6, "Skewb")
     list_cube = [cube1, cube2, cube3, cube4, cube5, cube6, cube7] # CREAR UNA LISTA CON ESOS PRODUCTOS
+
+
+    print("¿Cómo quieres entrar a nuestra tienda?\n1-Iniciando sesión\n2-Creando una cuenta")
+    metodo_login = int(input())
+    if(metodo_login == 1):
+        print("fds")
+    else:
+        print("******** CREAR UNA CUENTA ********")
+        name_user = input("Nombre del usuario: ")
+        email = input("Email: ")
+        password = input("Contraseña: ")
+        new_user = user(name_user, password, email)
+        user_dao.create_user(new_user)
 
     print("¡Bienvenido a CubeX! ¿Qué desea hacer en nuestra tienda?")
     while option != 0:
