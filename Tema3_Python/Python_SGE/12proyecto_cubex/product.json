@@ -47,5 +47,12 @@
         "stock": 6,
         "categoria": "Skewb",
         "owner": "c"
+    },
+    {
+        "nombre": "fsdafdsad",
+        "precio": 432432.0,
+        "stock": 324,
+        "categoria": "3x3",
+        "owner": "a"
     }
 ]

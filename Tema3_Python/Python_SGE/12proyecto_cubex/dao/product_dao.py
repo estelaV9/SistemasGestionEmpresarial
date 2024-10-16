@@ -54,6 +54,7 @@ def create_product (email):
 
     print("Se ha creado el producto exitosamente")
 
+# FUNCION PARA ELIMINAR PRODUCTO POR NOMBRE
 def delete_product(product_name):
     with open('product.json', 'r') as file:
         list_product_delete = json.load(file) # GUARDAR TODOS LOS PRODUCTOS EN LISTA
@@ -71,5 +72,38 @@ def delete_product(product_name):
         with open('product.json', 'w') as file:
             json.dump(list_product_delete, file, indent=4)
         print(f"Producto '{product_name}' eliminado exitosamente.")
+    else:
+        print(f"No se encontró el producto '{product_name}'.")
+
+# FUNCION PARA MODIFICAR UN PRODUCTO POR SU NOMBRE
+def modify_product(product_name):
+    with open('product.json', 'r') as file:
+        product_list = json.load(file) # GUARDAR TODOS LOS PRODUCTOS EN UNA LISTA
+
+    # BUSCAR NOMRBE PRODUCTO
+    product_found = False  # SABER SI SE HA ENCONTRADO EL PRODUCTO
+    for product in product_list:
+        if product['nombre'] == product_name: # SI HAY UN PRODUCTO CON ESE NOMBRE SE MODIFICA
+            product_found = True
+
+            # SE SOLICITA LOS NUEVOS DATOS PARA EL PRODUCTO
+            new_name = input("Nombre: ")
+            new_price = input("Precio: ")
+            new_stock = input("Stock disponible: ")
+            new_category = input("Categoría del cubo: ")
+
+            # SE MODIFICAN LOS ATRIBUTOS
+            product['nombre'] = new_name
+            product['precio'] = float(new_price)
+            product['stock'] = int(new_stock)
+            product['categoria'] = new_category
+
+            break  # SE SALE DEL BUCLE DESPUES DE MODIFICAR
+
+    if product_found:
+        # SE GUARDA LA LISTA ACTUALIZADA DE VUELTA AL JSON
+        with open('product.json', 'w') as file:
+            json.dump(product_list, file, indent=4)
+        print(f"Producto '{product_name}' modificado exitosamente.")
     else:
         print(f"No se encontró el producto '{product_name}'.")

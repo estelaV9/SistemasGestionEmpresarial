@@ -67,6 +67,8 @@ try:
                 product_dao.create_product(user_dao.search_name(email))
             case 5:
                 print("********** MODIFICAR PRODUCTOS **********")
+                product_name = input("Introducta el producto que quieras modificar: ")
+                product_dao.modify_product(product_name)
             case 6:
                 print("********** ELIMINAR PRODUCTOS **********")
                 product_name = input("Introducta el producto que quieras eliminar: ")
