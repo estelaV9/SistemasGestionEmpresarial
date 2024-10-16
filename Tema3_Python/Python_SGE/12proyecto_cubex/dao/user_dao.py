@@ -86,3 +86,13 @@ def list_user():
     # RECORRER LA LISTA Y MOSTRARLOS
     for user in list_user_show:
         print(user.__str__())
+
+# FUNCION PARA IMPRIMIR LA INFO DEL USUARIO
+def list_user_only(user_name):
+    with open('users.json', 'r') as file:
+        list_user_show = json.load(file) # GUARDAR LOS USUARIOS
+
+    # RECORRER LA LISTA Y MOSTRAR SU INFO
+    for user in list_user_show:
+        if user['Name'] == user_name: # SI ES EL NOMBRE DE USUARIO ENTONCES MUESTRA SU INFORMACION
+           print(user.__str__())
