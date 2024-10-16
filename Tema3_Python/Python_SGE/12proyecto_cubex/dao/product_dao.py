@@ -13,12 +13,12 @@ def list_product():
     except FileNotFoundError:
         # SI NO SE HA ENCONTRADO ARCHIVO, INCIAR LA LISTA EN NULO
         products = []
-    except JSONDecodeError:
-        # SI EL JSON ESTA VACIO, INICIAR LA LISTA EN NULO
-        products = []
 
-    for product in products:
-        print(product.__str__())
+    if products:
+        for product in products:
+            print(product.__str__())
+    else:
+        print("No hay productos disponibles")
 
 
 # FUNCION PARA LISTAR LOS PRODUCTOS DE UN USUARIO
