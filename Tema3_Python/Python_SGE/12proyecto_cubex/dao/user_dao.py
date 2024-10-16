@@ -20,7 +20,6 @@ def create_user(user_obj: user):
     # BUCLE PARA SABER SI EL USUARIO YA TENIA UNA CUENTA
     for user_exist in users:
         if user_exist['Email'] == user_obj.email and user_exist['Password'] == user_obj.password:
-            print(" kds fdsafdjksa f sjakf")
             # SI ENCUENTRA AL USUARIO CON ESE MAIL Y ESA CONTRASEÑA RETORNA FALSE Y NO SE CREARA LA CUENTA
             return False
 
@@ -51,7 +50,6 @@ def search_name (email):
     # SE RECORRE LA LISTA PARA ENCONTRAR AL USUARIO Y RETORNAR EL NOMBRE
     for user in list_user:
         if user['Email'] == email:
-            print(user['Name'])
             return user['Name']
 
 
@@ -96,3 +94,25 @@ def list_user_only(user_name):
     for user in list_user_show:
         if user['Name'] == user_name: # SI ES EL NOMBRE DE USUARIO ENTONCES MUESTRA SU INFORMACION
            print(user.__str__())
+
+def modify_user(user_name):
+    with open('users.json', 'r') as file:
+        list_user_show = json.load(file) # GUARDAR LOS USUARIOS
+
+    # RECORRER LA LISTA
+    for users in list_user_show:
+        if users['Name'] == user_name:
+            # MODIFICAR DATOS
+            new_name = input("Nombre: ")
+            new_mail = input("Email: ")
+            new_password = input("Password: ")
+            # SETTEAR NUEVOS VALORES
+            users['Name'] = new_name
+            users['Email'] = new_mail
+            users['Password'] = new_password
+            break
+
+    # ESCRIBIR LA NUEVA INFORMACION EN EL FICHERO
+    with open('users.json', 'w') as file:
+        json.dump(list_user_show, file, indent=4)
+    print(f"Usuario '{user_name}' se ha modificado exitosamente.")

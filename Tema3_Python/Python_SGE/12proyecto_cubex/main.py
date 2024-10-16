@@ -100,6 +100,7 @@ def apartado_usuario():
                 user_dao.list_user_only(user_dao.search_name(email))
             case 3:
                 print("********** MODIFICAR DATOS DEL USUARIO **********")
+                user_dao.modify_user(user_dao.search_name(email))
             case 4:
                 print("********** ELIMINAR USUARIO **********")
                 user_dao.delete_user(user_dao.search_name(email))
