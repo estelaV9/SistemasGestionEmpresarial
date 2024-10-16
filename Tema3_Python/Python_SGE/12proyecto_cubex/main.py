@@ -23,14 +23,23 @@ try:
 
     print("¿Cómo quieres entrar a nuestra tienda?\n1-Iniciando sesión\n2-Creando una cuenta")
     metodo_login = int(input())
-    if(metodo_login == 1):
-        print("fds")
+    if metodo_login == 1:
+        print("******** INICIAR SESION ********")
+        email = input("Email: ")
+        password = input("Contraseña: ")
+        user_log = user(email, password, name_user=None)
+        """ nota (para mi): para indicar que la funcion devuelva false en vez de poner '!' en Python es con 'not' """
+        if not user_dao.log_in(user_log):
+            print("No se ha encontrado usuario. Por favor, pruebe con otro usuario o crease una cuenta.")
+        else:
+            print("Inicio de sesión exitosa")
+
     else:
         print("******** CREAR UNA CUENTA ********")
         name_user = input("Nombre del usuario: ")
         email = input("Email: ")
         password = input("Contraseña: ")
-        new_user = user(name_user, password, email)
+        new_user = user(email, password, name_user)
         user_dao.create_user(new_user)
 
     print("¡Bienvenido a CubeX! ¿Qué desea hacer en nuestra tienda?")
