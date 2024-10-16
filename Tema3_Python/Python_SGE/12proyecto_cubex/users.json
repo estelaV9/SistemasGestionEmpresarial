@@ -5,6 +5,16 @@
         "Password": "a"
     },
     {
+        "Name": "b",
+        "Email": "b",
+        "Password": "b"
+    },
+    {
+        "Name": "c",
+        "Email": "c",
+        "Password": "c"
+    },
+    {
         "Name": "d",
         "Email": "d",
         "Password": "d"

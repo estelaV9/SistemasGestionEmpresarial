@@ -1,0 +1,51 @@
+[
+    {
+        "nombre": "Rubik 3x3 Gan 356 XS",
+        "precio": 39.99,
+        "stock": 2,
+        "categoria": "3x3x3",
+        "owner": "a"
+    },
+    {
+        "nombre": "MoYu WeiLong WR M 2020",
+        "precio": 29.99,
+        "stock": 5,
+        "categoria": "3x3",
+        "owner": "b"
+    },
+    {
+        "nombre": "QiYi MS 2x2",
+        "precio": 8.99,
+        "stock": 10,
+        "categoria": "2x2",
+        "owner": "c"
+    },
+    {
+        "nombre": "YJ YuLong Pyraminx V2 M",
+        "precio": 12.99,
+        "stock": 3,
+        "categoria": "Pyraminx",
+        "owner": "d"
+    },
+    {
+        "nombre": "Yuxin Little Magic 4x4",
+        "precio": 13.99,
+        "stock": 7,
+        "categoria": "4x4",
+        "owner": "a"
+    },
+    {
+        "nombre": "ShengShou Megaminx",
+        "precio": 14.99,
+        "stock": 4,
+        "categoria": "Megaminx",
+        "owner": "b"
+    },
+    {
+        "nombre": "X-Man Bell Magnetic Skewb",
+        "precio": 17.99,
+        "stock": 6,
+        "categoria": "Skewb",
+        "owner": "c"
+    }
+]
