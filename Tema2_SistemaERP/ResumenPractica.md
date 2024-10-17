@@ -131,7 +131,18 @@ Inicio                               | Sobre Nosotros                           
 <img src="myFiles/contactenos.png" width="400">| <img src="myFiles/servicios.png" width="400">|
 
 <br>
+<br>
 
+<table>
+  <tr>
+    <th>Nota Final de la Práctica</th>
+  </tr>
+  <tr>
+    <td>10 (Muy completo)</td>
+  </tr>
+</table>
+
+<br>
 
 ---
 <div align="center">
