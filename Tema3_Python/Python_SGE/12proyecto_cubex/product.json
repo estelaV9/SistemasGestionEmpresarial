@@ -54,5 +54,12 @@
         "stock": 324,
         "categoria": "3x3",
         "owner": "a"
+    },
+    {
+        "nombre": "fgdsg",
+        "precio": "132",
+        "stock": 1,
+        "categoria": "3x3x3",
+        "owner": "h"
     }
 ]

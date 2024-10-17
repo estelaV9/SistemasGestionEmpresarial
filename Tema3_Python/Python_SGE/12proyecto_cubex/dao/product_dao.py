@@ -2,9 +2,13 @@ import json
 from json import JSONDecodeError
 
 from model.product import product
-from dao import user_dao
 # meter lambda para validar positivos
 # filtrar listas
+
+categories = ("2x2x2", "3x3x3", "4x4x4", "5x5x5", "6x6x6", "7x7x7",
+            "pyraminx", "megaminx", "skewb", "square-1", "clock",
+            "3x3x3 mirror", "piramorphix", "mastermorphix") # TUPLA PARA GUARDAR LAS CATEGORIAS YA QUE NUNCA CAMBIAN
+
 def leer_archivo():
     try:
         with open('product.json', 'r') as file:
@@ -44,7 +48,25 @@ def create_product(email):
     product_name = input("Nombre del producto: ")
     product_price = input("Precio del producto: ")
     stock = int(input("Stock disponible: "))
-    categoria = input("Categoria del cubo: ")
+    # MOSTRAR LAS CATEGORIAS PARA QUE ELIJA
+    # RECORRER LA TUPLA CON LA FUNCION DE 'enumerate' LA CUAL DEVUELVE UN OBJETO ENUMERADO
+    for idx, category in enumerate(categories, 1):
+        print(f"{idx}. {category}")
+
+    # SE VALIDA QUE INTRODUZCA BIEN EL NUMERO DE LA CATEGORIA
+    while True:
+        try:
+            category_option = int(input("Introduce el número de la categoría: "))
+            # SE COMPRUEBA QUE LA CATEGORIA SEA MAYOR O IGUAL A 1 Y QUE SEA MENOR O IGUAL A LA LONGUITUD DE LA TUPLA
+            if 1 <= category_option and category_option <= len(categories):
+                categoria = categories[category_option - 1] # SI ES CORRECTO SE AÑADE LA OPCION
+                break
+            else:
+                print("Elección inválida, elige un número válido.") # SI NO ES CORRECTO SALTA UN ERROR
+        except ValueError:
+            print("Debes ingresar un número válido.") # SE VALIDA QUE NO PONGA LETRAS
+
+    # CREAR EL NUEVO PRODUCTO
     new_product = product(product_name, product_price, stock, categoria, email)
 
     with open('product.json', 'r') as file:
