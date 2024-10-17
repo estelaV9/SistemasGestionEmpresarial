@@ -22,26 +22,24 @@ def leer_archivo():
 # FUNCION PARA LISTAR TODOS LOS PRODUCTOS
 def list_product():
     products = leer_archivo()
-    # SI NO ES NULO APARECERA LA INFORMACION DEL PRODUCTO, SI NO UN MENSAJE DE QUE NO HAY PRODUCTOS
-    if products:
-        # RECORRER LA LISTA
-        for product in products:
-            print(product.__str__()) # IMPRIMIR LOS DATOS
-    else:
-        print("No hay productos disponibles")
+    # RECORRER LA LISTA
+    for product in products:
+        return product.__str__() # IMPRIMIR LOS DATOS
+
+    # SI NO RETORNA LOS DATOS, SIGNIFICA QUE LA LISTA ESTA VACIA Y NO TIENE NINGUN PRODUCTO, SE MANDA UN MENSAJE
+    return "No hay productos disponibles"
 
 
 # FUNCION PARA LISTAR LOS PRODUCTOS DE UN USUARIO
 def list_product_user(user_name):
     products = leer_archivo()
-    # SI NO ES NULO APARECERA LA INFORMACION DEL PRODUCTO, SI NO UN MENSAJE DE QUE NO HAY PRODUCTOS
-    if products:
-        # RECORRER LA LISTA
-        for product in products:
-            if product['owner'] == user_name:
-                print(product.__str__()) # IMPRIMIR LOS DATOS
-    else:
-        print(f"No hay productos disponibles del usuario {user_name}")
+    # RECORRER LA LISTA
+    for product in products:
+        if product['owner'] == user_name:
+            return product.__str__() # RETORNA LOS DATOS
+
+    # SI NO RETORNA LOS DATOS, SIGNIFICA QUE LA LISTA ESTA VACIA Y NO TIENE NINGUN PRODUCTO, SE MANDA UN MENSAJE
+    return print(f"No hay productos disponibles del usuario {user_name}")
 
 
 # FUNCION PARA CREAR UN PRODUCTO
