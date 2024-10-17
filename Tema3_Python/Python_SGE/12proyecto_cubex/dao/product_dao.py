@@ -116,13 +116,29 @@ def modify_product(product_name):
             new_name = input("Nombre: ")
             new_price = input("Precio: ")
             new_stock = input("Stock disponible: ")
-            new_category = input("Categoría del cubo: ")
+            # MOSTRAR LAS CATEGORIAS PARA QUE ELIJA
+            # RECORRER LA TUPLA CON LA FUNCION DE 'enumerate' LA CUAL DEVUELVE UN OBJETO ENUMERADO
+            for idx, category in enumerate(categories, 1): # EMPIEZA EN UNO
+                print(f"{idx}. {category}")
+
+            # SE VALIDA QUE INTRODUZCA BIEN EL NUMERO DE LA CATEGORIA
+            while True:
+                try:
+                    new_category = int(input("Introduce el número de la categoría: "))
+                    # SE COMPRUEBA QUE LA CATEGORIA SEA MAYOR O IGUAL A 1 Y QUE SEA MENOR O IGUAL A LA LONGUITUD DE LA TUPLA
+                    if 1 <= new_category and new_category <= len(categories):
+                        categoria = categories[new_category - 1]  # SI ES CORRECTO SE AÑADE LA OPCION
+                        break
+                    else:
+                        print("Elección inválida, elige un número válido.")  # SI NO ES CORRECTO SALTA UN ERROR
+                except ValueError:
+                    print("Debes ingresar un número válido.")  # SE VALIDA QUE NO PONGA LETRAS
 
             # SE MODIFICAN LOS ATRIBUTOS
             product['nombre'] = new_name
             product['precio'] = float(new_price)
             product['stock'] = int(new_stock)
-            product['categoria'] = new_category
+            product['categoria'] = categoria
 
             break  # SE SALE DEL BUCLE DESPUES DE MODIFICAR
 
