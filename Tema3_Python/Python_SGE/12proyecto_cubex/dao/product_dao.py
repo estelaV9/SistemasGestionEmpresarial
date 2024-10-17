@@ -24,10 +24,7 @@ def list_product():
     products = leer_archivo()
     # RECORRER LA LISTA
     for product in products:
-        return product.__str__() # IMPRIMIR LOS DATOS
-
-    # SI NO RETORNA LOS DATOS, SIGNIFICA QUE LA LISTA ESTA VACIA Y NO TIENE NINGUN PRODUCTO, SE MANDA UN MENSAJE
-    return "No hay productos disponibles"
+        print(product.__str__()) # IMPRIMIR LOS DATOS
 
 
 # FUNCION PARA LISTAR LOS PRODUCTOS DE UN USUARIO
@@ -36,10 +33,7 @@ def list_product_user(user_name):
     # RECORRER LA LISTA
     for product in products:
         if product['owner'] == user_name:
-            return product.__str__() # RETORNA LOS DATOS
-
-    # SI NO RETORNA LOS DATOS, SIGNIFICA QUE LA LISTA ESTA VACIA Y NO TIENE NINGUN PRODUCTO, SE MANDA UN MENSAJE
-    return print(f"No hay productos disponibles del usuario {user_name}")
+            print(product.__str__()) # RETORNA LOS DATOS
 
 
 # FUNCION PARA CREAR UN PRODUCTO
