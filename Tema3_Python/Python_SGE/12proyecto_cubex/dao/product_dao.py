@@ -1,9 +1,9 @@
 import json
 from json import JSONDecodeError
-
 from model.product import product
-# meter lambda para validar positivos
-# filtrar listas
+
+# FUNCION LAMBDA PARA FILTRAR QUE UN NUMERO SEA UN DIGITO Y POSITIVO
+validar_numero = lambda x: x.isdigit() and int(x) > 0
 
 categories = ("2x2x2", "3x3x3", "4x4x4", "5x5x5", "6x6x6", "7x7x7",
             "pyraminx", "megaminx", "skewb", "square-1", "clock",
@@ -40,7 +40,16 @@ def list_product_user(user_name):
 def create_product(email):
     product_name = input("Nombre del producto: ")
     product_price = input("Precio del producto: ")
+    # VALIDAR LOS DATOS NUMERICOS QUE SEAN POSITIVOS Y NUMEROS
+    if not validar_numero(product_price):
+        print("El valor ingresado no es un número positivo válido.")
+        return False
     stock = int(input("Stock disponible: "))
+    # VALIDAR LOS DATOS NUMERICOS QUE SEAN POSITIVOS Y NUMEROS
+    if not validar_numero(product_price):
+        print("El valor ingresado no es un número positivo válido.")
+        return False
+
     # MOSTRAR LAS CATEGORIAS PARA QUE ELIJA
     # RECORRER LA TUPLA CON LA FUNCION DE 'enumerate' LA CUAL DEVUELVE UN OBJETO ENUMERADO
     for idx, category in enumerate(categories, 1):
@@ -108,7 +117,16 @@ def modify_product(product_name):
             # SE SOLICITA LOS NUEVOS DATOS PARA EL PRODUCTO
             new_name = input("Nombre: ")
             new_price = input("Precio: ")
+            # VALIDAR LOS DATOS NUMERICOS QUE SEAN POSITIVOS Y NUMEROS
+            if not validar_numero(new_price):
+                print("El valor ingresado no es un número positivo válido.")
+                return False
             new_stock = input("Stock disponible: ")
+            # VALIDAR LOS DATOS NUMERICOS QUE SEAN POSITIVOS Y NUMEROS
+            if not validar_numero(new_stock):
+                print("El valor ingresado no es un número positivo válido.")
+                return False
+
             # MOSTRAR LAS CATEGORIAS PARA QUE ELIJA
             # RECORRER LA TUPLA CON LA FUNCION DE 'enumerate' LA CUAL DEVUELVE UN OBJETO ENUMERADO
             for idx, category in enumerate(categories, 1): # EMPIEZA EN UNO
