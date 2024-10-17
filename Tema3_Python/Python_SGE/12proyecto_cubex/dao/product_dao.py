@@ -9,6 +9,7 @@ categories = ("2x2x2", "3x3x3", "4x4x4", "5x5x5", "6x6x6", "7x7x7",
             "pyraminx", "megaminx", "skewb", "square-1", "clock",
             "3x3x3 mirror", "piramorphix", "mastermorphix") # TUPLA PARA GUARDAR LAS CATEGORIAS YA QUE NUNCA CAMBIAN
 
+# FUNCION PARA LEER ARICHIVO Y NO DUPLICAR CODIGO
 def leer_archivo():
     try:
         with open('product.json', 'r') as file:

@@ -121,11 +121,11 @@ try:
 
         if metodo_login == 1:
             email = method_login()  # LLAMAR AL METODO PARA INICIAR SESION
-            if email != None: # SI NO ES NULO SE SALE DEL BUCLE (se encontro usuario)
+            if email is not None: # SI NO ES NULO SE SALE DEL BUCLE (se encontro usuario)
                 break
         elif metodo_login == 2:
             email = method_signup()  # LLAMAR AL METODO PARA CREAR CUENTA
-            if email != None: # SI SE CREA BIEN LA CUENTA SALE DEL BUCLE
+            if email is not None: # SI SE CREA BIEN LA CUENTA SALE DEL BUCLE
                 break
 
     # MENU PRINCIPAL DESPUES DEL INICIO DE SESION
