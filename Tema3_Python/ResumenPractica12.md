@@ -154,6 +154,15 @@ def __str__(self):
 > ```
 
 
+## Nota
+<table>
+ <tr>
+  <th>Nota</th>
+ </tr>
+ <tr>
+  <td>9,20. No usa funciones lambda</td>
+ </tr>
+</table>
 
 
 
