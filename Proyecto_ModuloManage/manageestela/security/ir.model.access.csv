@@ -1,1 +1,6 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_manageestela_history,manageestela.history,model_manageestela_history,base.group_user,1,1,1,1
+access_manageestela_project,manageestela.project,model_manageestela_project,base.group_user,1,1,1,1
+access_manageestela_sprint,manageestela.sprint,model_manageestela_sprint,base.group_user,1,1,1,1
+access_manageestela_task,manageestela.task,model_manageestela_task,base.group_user,1,1,1,1
+access_manageestela_technology,manageestela.technology,model_manageestela_technology,base.group_user,1,1,1,1
