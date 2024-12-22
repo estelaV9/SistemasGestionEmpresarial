@@ -1,6 +1,7 @@
 # Proyecto Manageestela
 **Desarrollo del módulo “manage” con Odoo ERP; para gestionar proyectos usando metodologías ágiles: SCRUM**
 
+## Descripción
 El proyecto "**Manageestela**" consiste en el desarrollo de un módulo en Odoo ERP para gestionar proyectos utilizando la metodología ágil SCRUM. 
 
 El modelo de datos incluye tablas como `Proyecto`, `Sprint`, `Tarea`, `Tecnologías`, `Historial` y `Desarrolladores`. 
@@ -10,7 +11,7 @@ El sistema permite **gestionar tareas**, **asignar tecnologías** y hacer seguim
 
 
 ## Memoria
-Enlace a la memoria del proyecto en formato PDF: [Enlace a la memoria](#)  
+Enlace a la memoria del proyecto en formato PDF: [Enlace a la memoria](https://github.com/estelaV9/SistemasGestionEmpresarial/blob/master/Proyecto_ModuloManage/deVega_Martin_Estela_proyectomanage.pdf)  
 > [!NOTE]
 > (El archivo PDF contendrá toda la descripción del proyecto, el modelo relacional de la base de datos, las partes del proyecto y la posible ampliación).
 
