@@ -2,7 +2,7 @@
 **Desarrollo del módulo “manage” con Odoo ERP; para gestionar proyectos usando metodologías ágiles: SCRUM**
 
 ## Descripción
-El proyecto "**Manageestela**" consiste en el desarrollo de un módulo en Odoo ERP para gestionar proyectos utilizando la metodología ágil SCRUM. 
+El proyecto "<a href="https://github.com/estelaV9/SistemasGestionEmpresarial/tree/master/Proyecto_ModuloManage/manageestela">**Manageestela**</a>" consiste en el desarrollo de un módulo en Odoo ERP para gestionar proyectos utilizando la metodología ágil SCRUM. 
 
 El modelo de datos incluye tablas como `Proyecto`, `Sprint`, `Tarea`, `Tecnologías`, `Historial` y `Desarrolladores`. 
 Estas tablas están relacionadas entre sí para reflejar la estructura de un proyecto ágil: un proyecto tiene varios sprints, cada sprint contiene tareas, y las tareas pueden estar vinculadas a diferentes tecnologías y desarrolladores. 
