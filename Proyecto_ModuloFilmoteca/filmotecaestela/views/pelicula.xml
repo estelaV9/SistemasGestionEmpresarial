@@ -1,0 +1,176 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+
+        <record model="ir.ui.view" id="vista_filmotecaestela_pelicula_tree">
+            <field name="name">vista_filmotecaestela_pelicula_tree</field>
+            <field name="model">filmotecaestela.pelicula</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" string="Nombre"/>
+                    <field name="film_date" string="Fecha Película"/>
+                    <field name="description" string="Descripción"/>
+                    <field name="is_spanish" string="Es español?"/>
+                    <field name="genero_id" string="Genero ID"/>
+                    <button name="f_create" string="Crear" class="oe_hightlight" type="object"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="vista_filmotecaestela_pelicula_kanban">
+            <field name="name">vista_filmotecaestela_pelicula_kanban</field>
+            <field name="model">filmotecaestela.pelicula</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <field name="id"/>
+                    <field name="name"/>
+                    <field name="film_date"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click">
+                                <div class="o_kanban_image">
+                                    <img alt="Cartel"
+                                         t-att-src="kanban_image('filmotecaestela.pelicula', 'image', record.id.raw_value)"/>
+                                </div>
+                                <div class="o_kanban_details">
+                                    <strong class="o_kanban_record_title">
+                                        <field name="name"/>
+                                    </strong>
+                                    <div t-if="record.film_date.value">
+                                        <t t-esc="record.film_date.value"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="vista_filmotecaestela_pelicula_search">
+            <field name="name">vista_filmotecaestela_pelicula_search</field>
+            <field name="model">filmotecaestela.pelicula</field>
+            <field name="arch" type="xml">
+                <search string="Filtrar películas">
+                    <field name="name"/>
+                    <field name="is_spanish"/>
+                    <field name="film_date"/>
+                    <field name="color"/>
+                    <group expand="0" string="Group By">
+                        <filter name="groupby_is_spanish" string="Idioma" domain="[('is_spanish', '=', 'True')]"
+                                context="{'group_by': 'is_spanish'}"
+                                help="Agrupar por idioma"/>
+                        <filter name="groupby_film_date" string="Fecha"
+                                context="{'group_by': 'film_date'}"
+                                help="Agrupar por fecha"/>
+                    </group>
+                    <filter name="filter_by_color" string="Color" domain="[('color', '=', 'True')]"
+                            help="Películas en color"/>
+                </search>
+            </field>
+        </record>
+
+
+        <record id="vista_filmotecaestela_pelicula_form" model="ir.ui.view">
+            <field name="name">vista_filmotecaestela_pelicula_form</field>
+            <field name="model">filmotecaestela.pelicula</field>
+            <field name="arch" type="xml">
+                <form string="formulario_pelicula">
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="toggle_color" type="object" class="oe_stat_button"
+                                    string="Película color" icon="fa-paint-brush"/>
+                        </div>
+                        <group name="group_top">
+                            <group name="group_left">
+                                <field name="code" string="Código"/>
+                                <field name="name" string="Nombre"/>
+                                <field name="film_date" string="Fecha Película"/>
+                                <field name="description" string="Descripción"/>
+                                <field name="start_date" string="Fecha inicio"/>
+                                <field name="end_date" string="Fecha final"/>
+                                <field name="tecnica_id" string="Tecnicas"/>
+                            </group>
+
+                            <group name="group_right">
+                                <field name="is_spanish" string="Es español?"/>
+                                <field name="genero_id" string="Genero ID"/>
+                                <field name="image" string="Imagen" widget="image"/>
+                                <field name="language" string="Idiomas"/>
+                                <field name="opinion" string="Opinión"/>
+                                <field name="color" string="Color"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="accion_filmotecaestela_pelicula_form">
+            <field name="name">Listado de películas</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">filmotecaestela.pelicula</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Peliculas
+                </p>
+                <p>Click <strong>'Crear'</strong> para añadir nuevos elementos
+                </p>
+            </field>
+        </record>
+
+
+        <!-- Menú raiz-->
+        <menuitem name="Filmoteca Estela" id="menu_filmotecaestela_raiz"/>
+        <!-- Segundo nivel -->
+        <menuitem name="Listado de películas" id="menu_filmotecaestela_listado_peliculas"
+                  parent="menu_filmotecaestela_raiz"/>
+        <!-- actions -->
+        <menuitem name="Consultar" id="menu_filmotecaestela_peliculas"
+                  parent="menu_filmotecaestela_listado_peliculas"
+                  action="accion_filmotecaestela_pelicula_form"/>
+
+        <!-- actions opening views on models -->
+        <!--
+            <record model="ir.actions.act_window" id="filmotecaestela.action_window">
+              <field name="name">filmotecaestela window</field>
+              <field name="res_model">filmotecaestela.filmotecaestela</field>
+              <field name="view_mode">tree,form</field>
+            </record>
+        -->
+
+        <!-- server action to the one above -->
+        <!--
+            <record model="ir.actions.server" id="filmotecaestela.action_server">
+              <field name="name">filmotecaestela server</field>
+              <field name="model_id" ref="model_filmotecaestela_filmotecaestela"/>
+              <field name="state">code</field>
+              <field name="code">
+                action = {
+                  "type": "ir.actions.act_window",
+                  "view_mode": "tree,form",
+                  "res_model": model._name,
+                }
+              </field>
+            </record>
+        -->
+
+        <!-- Top menu item -->
+        <!--
+            <menuitem name="filmotecaestela" id="filmotecaestela.menu_root"/>
+        -->
+        <!-- menu categories -->
+        <!--
+            <menuitem name="Menu 1" id="filmotecaestela.menu_1" parent="filmotecaestela.menu_root"/>
+            <menuitem name="Menu 2" id="filmotecaestela.menu_2" parent="filmotecaestela.menu_root"/>
+        -->
+        <!-- actions -->
+        <!--
+            <menuitem name="List" id="filmotecaestela.menu_1_list" parent="filmotecaestela.menu_1"
+                      action="filmotecaestela.action_window"/>
+            <menuitem name="Server to list" id="filmotecaestela" parent="filmotecaestela.menu_2"
+                      action="filmotecaestela.action_server"/>
+        -->
+    </data>
+</odoo>

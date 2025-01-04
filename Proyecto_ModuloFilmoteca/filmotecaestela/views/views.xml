@@ -1,0 +1,83 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+        <!--
+        <record model="ir.ui.view" id="vista_filmotecaestela_pelicula_tree">
+            <field name="name">vista_filmotecaestela_pelicula_tree</field>
+            <field name="model">filmotecaestela.pelicula</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="film_date"/>
+                    <field name="description"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="is_spanish"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="vista_filmotecaestela_pelicula_form" model="ir.ui.view">
+            <field name="name">vista_filmotecaestela_pelicula_form</field>
+            <field name="model">filmotecaestela.pelicula</field>
+            <field name="arch" type="xml">
+                <form string="formulario_pelicula">
+                    <sheet>
+                        <group name="group_top">
+                            <field name="name"/>
+                            <field name="film_date"/>
+                            <field name="description"/>
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                            <field name="is_spanish"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        -->
+
+        <!-- actions opening views on models -->
+        <!--
+            <record model="ir.actions.act_window" id="filmotecaestela.action_window">
+              <field name="name">filmotecaestela window</field>
+              <field name="res_model">filmotecaestela.filmotecaestela</field>
+              <field name="view_mode">tree,form</field>
+            </record>
+        -->
+
+        <!-- server action to the one above -->
+        <!--
+            <record model="ir.actions.server" id="filmotecaestela.action_server">
+              <field name="name">filmotecaestela server</field>
+              <field name="model_id" ref="model_filmotecaestela_filmotecaestela"/>
+              <field name="state">code</field>
+              <field name="code">
+                action = {
+                  "type": "ir.actions.act_window",
+                  "view_mode": "tree,form",
+                  "res_model": model._name,
+                }
+              </field>
+            </record>
+        -->
+
+        <!-- Top menu item -->
+        <!--
+            <menuitem name="filmotecaestela" id="filmotecaestela.menu_root"/>
+        -->
+        <!-- menu categories -->
+        <!--
+            <menuitem name="Menu 1" id="filmotecaestela.menu_1" parent="filmotecaestela.menu_root"/>
+            <menuitem name="Menu 2" id="filmotecaestela.menu_2" parent="filmotecaestela.menu_root"/>
+        -->
+        <!-- actions -->
+        <!--
+            <menuitem name="List" id="filmotecaestela.menu_1_list" parent="filmotecaestela.menu_1"
+                      action="filmotecaestela.action_window"/>
+            <menuitem name="Server to list" id="filmotecaestela" parent="filmotecaestela.menu_2"
+                      action="filmotecaestela.action_server"/>
+        -->
+    </data>
+</odoo>

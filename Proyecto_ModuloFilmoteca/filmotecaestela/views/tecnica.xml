@@ -1,0 +1,49 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="vista_filmotecaestela_tecnica_tree">
+            <field name="name">vista_filmotecaestela_tecnica_tree</field>
+            <field name="model">filmotecaestela.tecnica</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="photo"/>
+                </tree>
+            </field>
+        </record>
+    </data>
+
+    <record model="ir.ui.view" id="vista_filmotecaestela_tecnica_form">
+        <field name="name">vista_filmotecaestela_tecnica_form</field>
+        <field name="model">filmotecaestela.tecnica</field>
+        <field name="arch" type="xml">
+            <form string="formulario_tecnica">
+                <sheet>
+                    <group name="group_top">
+                        <field name="name"/>
+                        <field name="description"/>
+                        <field name="peliculas_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="accion_filmotecaestela_tecnica_form">
+        <field name="name">Listado de técnicas de rodaje</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">filmotecaestela.tecnica</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Tecnicas
+            </p>
+            <p>Click <strong>'Crear'</strong> para añadir nuevos elementos
+            </p>
+        </field>
+    </record>
+    <menuitem name="Listado de técnicas de rodaje" id="menu_filmotecaestela_listado_tecnicas"
+              parent="menu_filmotecaestela_raiz"/>
+    <menuitem name="Consultar" id="menu_filmotecaestela_tecnicas" parent="menu_filmotecaestela_listado_tecnicas"
+              action="accion_filmotecaestela_tecnica_form"/>
+</odoo>

@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_filmotecaestela_pelicula,filmotecaestela.pelicula,model_filmotecaestela_pelicula,base.group_user,1,1,1,1
+access_filmotecaestela_genero,filmotecaestela.genero,model_filmotecaestela_genero,base.group_user,1,1,1,1
+access_filmotecaestela_tecnica,filmotecaestela.tecnica,model_filmotecaestela_tecnica,base.group_user,1,1,1,1
