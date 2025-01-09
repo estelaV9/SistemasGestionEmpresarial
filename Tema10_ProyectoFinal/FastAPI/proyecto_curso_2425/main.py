@@ -18,20 +18,28 @@ class User(BaseModel):  # Schema
 
 # CREAMOS UNA INSTANCIA DE FASTAPI
 app = FastAPI()
+listaUsuarios = [] # LISTA USUARIOS
 
 # PETICION GET QUE DEVUELVE UN MENSAJE
 @app.get("/ruta1")
 def ruta1():
     return {"mensaje": "Hemos creado nuestra primera API!!!"}
 
+# PETICION GET QUE DEVUELVE LOS USUARIOS
+@app.get("/user")
+def obtener_usuarios():
+    return listaUsuarios
 
 # PETICION POST PARA INSERTAR USUARIO E IMPRIMIRLO POR CONSOLA
-@app.post("/ruta2")
+@app.post("/user")
 # INDICAR QUE EL USUARIO QUE VA A RECIBIR SERA IGUAL AL MODELO QUE HEMOS CREADO
-def ruta2(user: User):
-    print(user) # IMPRIMIR EL USUARIO CUANDO SE EJECUTA
-    print(user.nombre) # IMPRIMIR EL NOMBRE
-    return True
+def crear_usuario(user: User):
+    # ASIGNAMOS EL DICCIONARIO A UNA VARIABLE
+    usuarioDiccionario = user.model_dump() # CONVERTIR EN UN DICIONARIO
+    """ EL USUARIO QUE ENVIAMOS POR Swagger SE AÑADE A LA LISTA DE USUARIOS """
+    listaUsuarios.append(usuarioDiccionario)
+    print(usuarioDiccionario) # IMPRIMIR EL DICCIONARIO
+    return {"Respuesta": "Usuario creado!"}
 
 
 """ DOCUMENTACION AUTOMATICA DE FASTAPI
