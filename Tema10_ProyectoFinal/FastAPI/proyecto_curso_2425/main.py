@@ -30,6 +30,16 @@ def ruta1():
 def obtener_usuarios():
     return listaUsuarios
 
+# PETICION GET QUE DEVUELVE UN USUARIO EN CONCRETO
+@app.get("/user/{user_id}")
+def obtener_usuario(user_id:int):
+    for user in listaUsuarios:
+        # ACCEDER AL ID DE USER Y COMPARAR CON EL ID QUE SE PASA COMO QUERY
+        if user["id"] == user_id:
+            return {"usuario": user}
+    # SI SE PASA UN ID DE UN USUARIO QUE NO EXISTE
+    return{"Respuesta": "Usuario no encontrado"}
+
 # PETICION POST PARA INSERTAR USUARIO E IMPRIMIRLO POR CONSOLA
 @app.post("/user")
 # INDICAR QUE EL USUARIO QUE VA A RECIBIR SERA IGUAL AL MODELO QUE HEMOS CREADO
