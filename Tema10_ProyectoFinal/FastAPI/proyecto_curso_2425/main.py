@@ -1,16 +1,29 @@
-# This is a sample Python script.
+from fastapi import FastAPI
+import uvicorn
 
-# Press Mayús+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+# CREAMOS UNA INSTANCIA DE FASTAPI
+app = FastAPI()
+
+# PETICION GET QUE DEVUELVE UN MENSAJE
+@app.get("/ruta1")
+def ruta1():
+    return {"mensaje": "Hemos creado nuestra primera API!!!"}
+
+# PETICION POST
+@app.post("/ruta2")
+def ruta2(user):
+    print(user)
+    return True
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+""" DOCUMENTACION AUTOMATICA DE FASTAPI
+    DESDE EL EXPLORADOR, INDICAMOS LA DIRECCION /docs PARA VER LA DOCUMENTACION
+    DE LA API QUE SE HA CREADO DE FORMA AUTOMATICA. 
+    AL PROBARLO, PODEMOS HACER CLIC EN "EXECUTE" PARA PROBAR LAS RUTAS. """
 
+if __name__ == "__main__":
+    # EJECUTAMOS EL SERVIDOR UVICORN EN EL PUERTO 8000 CON LA OPCION RELOAD ACTIVADA
+    uvicorn.run("main:app", port=8000, reload=True)
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+# EL PARAMETRO "RELOAD" PERMITE RECARGAR EL CONTEXTO DEL SERVIDOR CADA VEZ QUE
+# SE CAMBIE ALGO EN EL ARCHIVO main.py (CUANDO PULSEMOS CTRL+S).
