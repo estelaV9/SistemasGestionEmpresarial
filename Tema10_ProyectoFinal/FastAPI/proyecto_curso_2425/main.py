@@ -64,6 +64,16 @@ def obtener_usuario_json(user_id:UserId):
     # SI SE PASA UN ID DE USUARIO QUE NO EXISTE
     return {"respuesta": "Usuario no encontrado"}
 
+# PETICION DELETE PARA ELIMINAR USUARIO POR ID
+@app.delete("/user/{user_id}")
+def eliminar_usuario(user_id:int):
+    # NECESITAMOS SABER EL INDICE Y EL VALOR PARA VER SI EL user_id = AL QUE ESTAMOS RECORRIENDO
+    for index, user in enumerate(listaUsuarios):
+        if user["id"] == user_id:
+            listaUsuarios.pop(index)
+            return {"Respuesta": "Usuario eliminado correctamente"}
+    return {"Respuesta": "Usuario NO encontrado"}
+
 
 """ DOCUMENTACION AUTOMATICA DE FASTAPI
     DESDE EL EXPLORADOR, INDICAMOS LA DIRECCION /docs PARA VER LA DOCUMENTACION
