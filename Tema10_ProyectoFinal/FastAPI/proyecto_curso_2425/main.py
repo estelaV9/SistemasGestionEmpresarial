@@ -15,6 +15,9 @@ class User(BaseModel):  # Schema
     telefono: int
     creacion_user: datetime = datetime.now()  # FECHA POR DEFECTO
 
+# MODELO CUYO CONTENIDO SERA EL ID DE USUARIO
+class UserId(BaseModel):
+    id:int
 
 # CREAMOS UNA INSTANCIA DE FASTAPI
 app = FastAPI()
@@ -50,6 +53,16 @@ def crear_usuario(user: User):
     listaUsuarios.append(usuarioDiccionario)
     print(usuarioDiccionario) # IMPRIMIR EL DICCIONARIO
     return {"Respuesta": "Usuario creado!"}
+
+# PETICION POST PARA OBTENER UN USUARIO MEDIANTE UN "BODY" DE JSON
+@app.post("/userjson")
+def obtener_usuario_json(user_id:UserId):
+    for user in listaUsuarios:
+        # ACCEDER AL ID DE USER Y COMPARAR CON EL ID DE user_id QUE SE PASA COMO JSON
+        if user["id"] == user_id.id:
+            return{"usuario":user}
+    # SI SE PASA UN ID DE USUARIO QUE NO EXISTE
+    return {"respuesta": "Usuario no encontrado"}
 
 
 """ DOCUMENTACION AUTOMATICA DE FASTAPI
