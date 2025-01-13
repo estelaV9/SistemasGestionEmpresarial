@@ -4,3 +4,4 @@ access_manageestela_project,manageestela.project,model_manageestela_project,base
 access_manageestela_sprint,manageestela.sprint,model_manageestela_sprint,base.group_user,1,1,1,1
 access_manageestela_task,manageestela.task,model_manageestela_task,base.group_user,1,1,1,1
 access_manageestela_technology,manageestela.technology,model_manageestela_technology,base.group_user,1,1,1,1
+access_manageestela_notification,manageestela.notification,model_manageestela_notification,base.group_user,1,1,1,1
