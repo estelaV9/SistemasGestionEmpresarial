@@ -33,6 +33,7 @@
         'views/technology.xml',
         'views/task.xml',
         'views/developer.xml',
+        'views/notification.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
