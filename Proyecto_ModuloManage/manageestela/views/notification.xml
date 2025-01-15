@@ -43,9 +43,7 @@
             </field>
         </record>
 
-        <menuitem id="menu_notifications"
-                  name="Notificaciones"
-                  parent="menu_manageestela_management"
-                  action="action_notifications"/>
+        <menuitem id="menu_notifications" name="Notificaciones"
+                  parent="menu_manageestela_management" action="action_notifications"/>
     </data>
 </odoo>

@@ -1,0 +1,58 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="vista_manageestela_sprint_tree">
+            <field name="name">vista_manageestela_sprint_tree</field>
+            <field name="model">manageestela.sprint</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" string="Nombre"/>
+                    <field name="description" string="Descripción"/>
+                    <field name="duration" string="Duración"/>
+                    <field name="start_date" string="Fecha Inicializacion"/>
+                    <field name="end_date" string="Fecha Finalizacion"/>
+                    <field name="task_id" string="ID Tarea"/>
+                    <field name="project_sprint_id" string="Projects"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="vista_manageestela_sprint_form" model="ir.ui.view">
+            <field name="name">vista_manageestela_sprint_form</field>
+            <field name="model">manageestela.sprint</field>
+            <field name="arch" type="xml">
+                <form string="formulario_sprint">
+                    <sheet>
+                        <group name="group_top">
+                            <field name="name" string="Nombre"/>
+                            <field name="description" string="Descripción"/>
+                            <field name="duration" string="Duración"/>
+                            <field name="start_date" string="Fecha Inicializacion"/>
+                            <field name="end_date" string="Fecha Finalizacion"/>
+                            <field name="task_id" string="ID Tarea"/>
+                            <field name="project_sprint_id" string="Projects"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="accion_manageestela_sprint_form">
+            <field name="name">Listado de sprints</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">manageestela.sprint</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Sprints
+                </p>
+                <p>Click <strong>'Crear'</strong> para añadir nuevos elementos
+                </p>
+            </field>
+        </record>
+
+        <!-- actions -->
+        <menuitem name="Sprints" id="menu_manageestela_sprint"
+                  parent="menu_manageestela_management"
+                  action="accion_manageestela_sprint_form"/>
+    </data>
+</odoo>

@@ -1,7 +1,6 @@
 from odoo import models, fields, api
 import datetime
 
-
 class Task(models.Model):
     _name = 'manageestela.task'
     _description = 'manageestela.task'
