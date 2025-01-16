@@ -7,4 +7,3 @@ from . import task
 from . import history
 from . import technology
 from . import developer
-from . import notification

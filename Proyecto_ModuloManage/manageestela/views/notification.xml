@@ -1,0 +1,49 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="view_notification_tree">
+            <field name="name">view.notification.tree</field>
+            <field name="model">manageestela.notification</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="creation_date" string="Fecha"/>
+                    <field name="user_id" string="Usuario"/>
+                    <field name="task_id" string="Tarea"/>
+                    <field name="description" string="Descripción"/>
+                    <field name="notification_type" string="Tipo"/>
+                    <field name="state" string="Estado"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_notification_form">
+            <field name="name">view.notification.form</field>
+            <field name="model">manageestela.notification</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="creation_date"/>
+                            <field name="user_id"/>
+                            <field name="task_id"/>
+                            <field name="description"/>
+                            <field name="notification_type"/>
+                            <field name="state"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_notifications">
+            <field name="name">Notificaciones</field>
+            <field name="res_model">manageestela.notification</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p>Listado de notificaciones generadas automaticamente.</p>
+            </field>
+        </record>
+
+        <menuitem id="menu_notifications" name="Notificaciones"
+                  parent="menu_manageestela_management" action="action_notifications"/>
+    </data>
+</odoo>

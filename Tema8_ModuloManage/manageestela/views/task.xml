@@ -1,5 +1,7 @@
 <odoo>
     <data>
+        <!-- explicit list view definition -->
+
         <record model="ir.ui.view" id="vista_manageestela_task_tree">
             <field name="name">vista_manageestela_task_tree</field>
             <field name="model">manageestela.task</field>
@@ -7,16 +9,12 @@
                 <tree>
                     <field name="name" string="Nombre"/>
                     <field name="description" string="Descripción"/>
-                    <field name="start_date" string="Fecha Inicialización"/>
-                    <field name="end_date" string="Fecha Finalización"/>
-                    <field name="state" string="Estado"/>
-                    <field name="progress" widget="progressbar" string="Progreso"
-                           options="{'max': 200}"/>
+                    <field name="start_date" string="Fecha Inicializacion"/>
+                    <field name="end_date" string="Fecha Finalizacion"/>
                     <field name="is_paused" string="¿Está Pausado?"/>
                     <field name="sprint_id" string="ID Sprint"/>
                     <field name="technology_id" string="ID Technology"/>
                     <field name="history_task_id" string="Historia relacionada"/>
-                    <field name="developer_ids" widget="many2many_tags" string="Desarrolladores"/>
                 </tree>
             </field>
         </record>
@@ -25,21 +23,17 @@
             <field name="name">vista_manageestela_task_form</field>
             <field name="model">manageestela.task</field>
             <field name="arch" type="xml">
-                <form string="Formulario de Tareas">
+                <form string="formulario_task">
                     <sheet>
-                        <group>
+                        <group name="group_top">
                             <field name="name" string="Nombre"/>
                             <field name="description" string="Descripción"/>
-                            <field name="start_date" string="Fecha Inicialización"/>
-                            <field name="end_date" string="Fecha Finalización"/>
-                            <field name="state" string="Estado"/>
-                            <field name="progress" widget="progressbar" string="Progreso"
-                                   options="{'max': 200}"/>
+                            <field name="start_date" string="Fecha Inicializacion"/>
+                            <field name="end_date" string="Fecha Finalizacion"/>
                             <field name="is_paused" string="¿Está Pausado?"/>
                             <field name="sprint_id" string="ID Sprint"/>
                             <field name="technology_id" string="ID Technology"/>
                             <field name="history_task_id" string="Historia relacionada"/>
-                            <field name="developer_ids" widget="many2many_tags" string="Desarrolladores"/>
                         </group>
                     </sheet>
                 </form>
@@ -47,24 +41,28 @@
         </record>
 
         <record model="ir.actions.act_window" id="accion_manageestela_task_form">
-            <field name="name">Listado de Tareas</field>
+            <field name="name">Listado de proyectos</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">manageestela.task</field>
             <field name="view_mode">tree,form</field>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
-                    Gestiona tus tareas aquí.
+                    Tecnologias
                 </p>
-                <p>Haz clic en <strong>'Crear'</strong> para añadir nuevas tareas.
+                <p>Click <strong>'Crear'</strong> para añadir nuevos elementos
                 </p>
             </field>
         </record>
 
+
+        <!-- Menú raiz -->
         <menuitem name="Manage Estela" id="menu_manageestela_raiz"/>
 
+        <!-- Segundo nivel -->
         <menuitem name="Management" id="menu_manageestela_management"
                   parent="menu_manageestela_raiz"/>
 
+        <!-- actions -->
         <menuitem name="Task" id="menu_manageestela_task"
                   parent="menu_manageestela_management"
                   action="accion_manageestela_task_form"/>
