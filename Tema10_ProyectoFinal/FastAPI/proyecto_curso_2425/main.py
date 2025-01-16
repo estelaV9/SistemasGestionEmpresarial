@@ -1,6 +1,15 @@
 from fastapi import FastAPI
 import uvicorn
 from app.routers import user
+from app.db.database import Base, engine
+
+# CREAR TODAS LAS TABLAS DEFINIDAS EN SQLAlchemy
+# VINCULA LA CREACION DE LAS TABLAS A LA BD
+def create_tables():
+    Base.metadata.create_all(bind=engine)
+
+# SE CREARAN SI NO EXISTE LA BD
+create_tables()
 
 # CREAMOS UNA INSTANCIA DE FASTAPI
 app = FastAPI()
