@@ -1,6 +1,9 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
 # IMPORTAR LOS ESQUEMAS PARA PODER USARLOS
 from app.schemas import User, UserId
+from app.db.database import get_db
+from sqlalchemy.orm import Session
+from app import models
 
 listaUsuarios = []  # LISTA USUARIOS
 
@@ -22,7 +25,9 @@ def ruta1():
 
 # PETICION GET QUE DEVUELVE LOS USUARIOS
 @router.get("/")
-def obtener_usuarios():
+def obtener_usuarios(db: Session = Depends(get_db)): # LA RUTA RECIBE LA BD
+    data = db.query(models.User).all()
+    print(data)
     return listaUsuarios
 
 
@@ -40,12 +45,27 @@ def obtener_usuario(user_id: int):
 # PETICION POST PARA INSERTAR USUARIO E IMPRIMIRLO POR CONSOLA
 @router.post("/")
 # INDICAR QUE EL USUARIO QUE VA A RECIBIR SERA IGUAL AL MODELO QUE HEMOS CREADO
-def crear_usuario(user: User):
+def crear_usuario(user: User, db:Session=Depends(get_db)):
     # ASIGNAMOS EL DICCIONARIO A UNA VARIABLE
     usuarioDiccionario = user.model_dump()  # CONVERTIR EN UN DICIONARIO
-    """ EL USUARIO QUE ENVIAMOS POR Swagger SE AÑADE A LA LISTA DE USUARIOS """
+
+    # USER E SLO QUE LLEGA MEIDANTE EL ESQUEMA DEL BODY usuario.append(usuario)
+    nuevo_usuario = models.User(
+        username = usuarioDiccionario["username"],
+        password = usuarioDiccionario["password"],
+        nombre = usuarioDiccionario["nombre"],
+        apellido = usuarioDiccionario["apellido"],
+        direccion = usuarioDiccionario["direccion"],
+        telefono = usuarioDiccionario["telefono"],
+        correo = usuarioDiccionario["correo"],
+    )
+    db.add(nuevo_usuario)
+    db.commit()
+    db.refresh(nuevo_usuario)
+
+    """ EL USUARIO QUE ENVIAMOS POR Swagger SE AÑADE A LA LISTA DE USUARIOS 
     listaUsuarios.routerend(usuarioDiccionario)
-    print(usuarioDiccionario)  # IMPRIMIR EL DICCIONARIO
+    print(usuarioDiccionario)  # IMPRIMIR EL DICCIONARIO """
     return {"Respuesta": "Usuario creado!"}
 
 
