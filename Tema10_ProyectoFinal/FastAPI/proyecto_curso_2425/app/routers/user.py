@@ -1,9 +1,12 @@
 from fastapi import APIRouter, Depends
+from fastapi.params import Depends
+
 # IMPORTAR LOS ESQUEMAS PARA PODER USARLOS
-from app.schemas import User, UserId
+from app.schemas import User, UserId, ShowUser, UpdateUser
 from app.db.database import get_db
 from sqlalchemy.orm import Session
 from app import models
+from typing import List
 
 listaUsuarios = []  # LISTA USUARIOS
 
@@ -24,22 +27,28 @@ def ruta1():
 
 
 # PETICION GET QUE DEVUELVE LOS USUARIOS
-@router.get("/")
+@router.get("/", response_model=List[ShowUser])
 def obtener_usuarios(db: Session = Depends(get_db)): # LA RUTA RECIBE LA BD
     data = db.query(models.User).all()
     print(data)
-    return listaUsuarios
+    return data
 
 
 # PETICION GET QUE DEVUELVE UN USUARIO EN CONCRETO
-@router.get("/{user_id}")
-def obtener_usuario(user_id: int):
-    for user in listaUsuarios:
+@router.get("/{user_id}", response_model=ShowUser)
+def obtener_usuario(user_id: int, db:Session = Depends(get_db)):
+    usuario = db.query(models.User).filter(models.User.id == user_id).first()
+    if not usuario:
+        # SI SE PASA UN ID DE UN USUARIO QUE NO EXISTE
+        return {"respuesta": "Usuario no encontrado"}
+    return usuario
+
+    """for user in listaUsuarios:
         # ACCEDER AL ID DE USER Y COMPARAR CON EL ID QUE SE PASA COMO QUERY
         if user["id"] == user_id:
             return {"usuario": user}
     # SI SE PASA UN ID DE UN USUARIO QUE NO EXISTE
-    return {"Respuesta": "Usuario no encontrado"}
+    return {"Respuesta": "Usuario no encontrado"}"""
 
 
 # PETICION POST PARA INSERTAR USUARIO E IMPRIMIRLO POR CONSOLA
@@ -66,6 +75,7 @@ def crear_usuario(user: User, db:Session=Depends(get_db)):
     """ EL USUARIO QUE ENVIAMOS POR Swagger SE AÑADE A LA LISTA DE USUARIOS 
     listaUsuarios.routerend(usuarioDiccionario)
     print(usuarioDiccionario)  # IMPRIMIR EL DICCIONARIO """
+    listaUsuarios.append(nuevo_usuario)
     return {"Respuesta": "Usuario creado!"}
 
 
@@ -82,17 +92,38 @@ def obtener_usuario_json(user_id: UserId):
 
 # PETICION DELETE PARA ELIMINAR USUARIO POR ID
 @router.delete("/{user_id}")
-def eliminar_usuario(user_id: int):
-    # NECESITAMOS SABER EL INDICE Y EL VALOR PARA VER SI EL user_id = AL QUE ESTAMOS RECORRIENDO
+def eliminar_usuario(user_id: int, db:Session=Depends(get_db)):
+    usuario = db.query(models.User).filter(models.User.id == user_id).first()
+    if not usuario:
+        return {"respuesta": "Usuario no encontrado"}
+    db.delete(usuario)
+    db.commit()
+    return {"respuesta": "Usuario eliminado correctamente"}
+
+    """
+    NECESITAMOS SABER EL INDICE Y EL VALOR PARA VER SI EL user_id = AL QUE ESTAMOS RECORRIENDO
     for index, user in enumerate(listaUsuarios):
         if user["id"] == user_id:
             listaUsuarios.pop(index)
             return {"Respuesta": "Usuario eliminado correctamente"}
-    return {"Respuesta": "Usuario NO encontrado"}
+    return {"Respuesta": "Usuario NO encontrado"}"""
 
 
 # PETICION PUT PARA MODIFICAR POR ID
-@router.put("/{user_id}")
+@router.patch("/{user_id")
+def actualizar_usuario(user_id:int, updateUser:UpdateUser, db:Session=Depends(get_db)):
+    usuario = db.query(models.User).filter(models.User.id == user_id)
+
+    if not usuario.first():
+        # SI SE PASA UN ID DE UN USUARIO QUE NO EXISTE
+        return {"respuesta": "Usuario no encontrado"}
+    # INDICA QUE SOLO SE ACTUALICEN LOS CAMPOS QUE ESTAN LLEGANDO, NO TODOS
+    usuario.update(updateUser.model_dump(exclude_unset=True))
+    db.commit()
+    return {"respuesta": "Usuario actualizado correctamente"}
+
+
+"""@router.put("/{user_id}")
 def actualizar_usuario(user_id: int, updateUser: User):
     # NECESITAMOS SABER EL INDICE Y EL VALOR PARA VER SI EL user_id ES = AL QUE ESTAMOS RECORREINDO
     for index, user in enumerate(listaUsuarios):
@@ -103,4 +134,4 @@ def actualizar_usuario(user_id: int, updateUser: User):
             listaUsuarios[index]["direccion"] = updateUser.model_dump()["direccion"]
             listaUsuarios[index]["telefono"] = updateUser.model_dump()["telefono"]
             return {"Respuesta": "Usuario NO encontrado"}
-    return {"Respuesta": "Usuario actualizado correctamente"}
+    return {"Respuesta": "Usuario actualizado correctamente"}"""
