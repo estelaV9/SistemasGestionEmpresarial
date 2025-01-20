@@ -15,9 +15,9 @@ class User(BaseModel):  # Schema
     creacion_user: datetime = datetime.now()  # FECHA POR DEFECTO
 
 
-# MODELO CUYO CONTENIDO SERA EL ID DE USUARIO
+""""# MODELO CUYO CONTENIDO SERA EL ID DE USUARIO
 class UserId(BaseModel):
-    id: int
+    id: int"""
 
 # MODELO ShowUser PARA DEVOLVER DATOS DE UN USUARIO
 class ShowUser(BaseModel):

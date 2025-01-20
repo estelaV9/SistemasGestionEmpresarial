@@ -2,13 +2,13 @@ from fastapi import APIRouter, Depends
 from fastapi.params import Depends
 
 # IMPORTAR LOS ESQUEMAS PARA PODER USARLOS
-from app.schemas import User, UserId, ShowUser, UpdateUser
+from app.schemas import User, ShowUser, UpdateUser
 from app.db.database import get_db
 from sqlalchemy.orm import Session
 from app import models
 from typing import List
 
-listaUsuarios = []  # LISTA USUARIOS
+# listaUsuarios = []  # LISTA USUARIOS
 
 """ APIRouter ES UN CLASE QUE SE UTILIZA PARA ORGANIZAR Y ESTRUCTURAR
 RUTAS DE API """
@@ -19,11 +19,11 @@ router = APIRouter(
     tags=["Users"]
 )
 
-
+"""
 # PETICION GET QUE DEVUELVE UN MENSAJE
 @router.get("/ruta1")
 def ruta1():
-    return {"mensaje": "Hemos creado nuestra primera API!!!"}
+    return {"mensaje": "Hemos creado nuestra primera API!!!"}"""
 
 
 # PETICION GET QUE DEVUELVE LOS USUARIOS
@@ -78,7 +78,7 @@ def crear_usuario(user: User, db:Session=Depends(get_db)):
     listaUsuarios.append(nuevo_usuario)
     return {"Respuesta": "Usuario creado!"}
 
-
+"""
 # PETICION POST PARA OBTENER UN USUARIO MEDIANTE UN "BODY" DE JSON
 @router.post("/userjson")
 def obtener_usuario_json(user_id: UserId):
@@ -87,7 +87,7 @@ def obtener_usuario_json(user_id: UserId):
         if user["id"] == user_id.id:
             return {"usuario": user}
     # SI SE PASA UN ID DE USUARIO QUE NO EXISTE
-    return {"respuesta": "Usuario no encontrado"}
+    return {"respuesta": "Usuario no encontrado"}"""
 
 
 # PETICION DELETE PARA ELIMINAR USUARIO POR ID
