@@ -24,9 +24,13 @@
 
     # always loaded
     'data': [
-        # 'security/ir.model.access.csv',
+        'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
+        'views/coach.xml',
+        'views/course.xml',
+        'views/school.xml',
+        'views/student.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

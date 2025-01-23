@@ -1,0 +1,61 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="vista_padelschool_course_tree">
+            <field name="name">vista_padelschool_course_tree</field>
+            <field name="model">padelschool.course</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" string="Nombre"/>
+                    <field name="start_date" string="Fecha Inicialización"/>
+                    <field name="end_date" string="Fecha Finalización"/>
+                    <field name="duration" string="Duración"/>
+                    <field name="mail" string="Mail"/>
+                    <field name="phone" string="Telefono"/>
+                    <field name="school_id" widget="many2one_tags" string="Escuela"/>
+                    <field name="coach_course_id" widget="many2one_tags" string="Entrenador"/>
+                    <field name="student_id" widget="many2many_tags" string="Estudiantes por curso"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="vista_padelschool_course_form" model="ir.ui.view">
+            <field name="name">vista_padelschool_course_form</field>
+            <field name="model">padelschool.course</field>
+            <field name="arch" type="xml">
+                <form string="Formulario de Tareas">
+                    <sheet>
+                        <group>
+                            <field name="name" string="Nombre"/>
+                            <field name="start_date" string="Fecha Inicialización"/>
+                            <field name="end_date" string="Fecha Finalización"/>
+                            <field name="duration" string="Duración"/>
+                            <field name="mail" string="Mail"/>
+                            <field name="phone" string="Telefono"/>
+                            <field name="school_id" widget="many2one_tags" string="Escuela"/>
+                            <field name="coach_course_id" widget="many2one_tags" string="Entrenador"/>
+                            <field name="student_id" widget="many2many_tags" string="Estudiantes por curso"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="accion_padelschool_course_form">
+            <field name="name">Listado de Cursos</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">padelschool.course</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Gestiona tus cursos aquí.
+                </p>
+                <p>Haz clic en <strong>'Crear'</strong> para añadir nuevos cursos.
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="Cursos" id="menu_padelschool_course"
+                  parent="menu_padelschool_padelschool"
+                  action="accion_padelschool_course_form"/>
+    </data>
+</odoo>
