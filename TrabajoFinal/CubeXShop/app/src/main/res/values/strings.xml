@@ -11,4 +11,7 @@
     <string name="welcome">Welcome</string>
     <string name="no_account">Don\'t have an account?</string>
     <string name="sign_up">Sign up</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="login_word">Login</string>
 </resources>
