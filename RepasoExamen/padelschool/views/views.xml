@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="padelschool.list">
+      <field name="name">padelschool list</field>
+      <field name="model">padelschool.padelschool</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="padelschool.action_window">
+      <field name="name">padelschool window</field>
+      <field name="res_model">padelschool.padelschool</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="padelschool.action_server">
+      <field name="name">padelschool server</field>
+      <field name="model_id" ref="model_padelschool_padelschool"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="padelschool" id="padelschool.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="padelschool.menu_1" parent="padelschool.menu_root"/>
+    <menuitem name="Menu 2" id="padelschool.menu_2" parent="padelschool.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="padelschool.menu_1_list" parent="padelschool.menu_1"
+              action="padelschool.action_window"/>
+    <menuitem name="Server to list" id="padelschool" parent="padelschool.menu_2"
+              action="padelschool.action_server"/>
+-->
+  </data>
+</odoo>

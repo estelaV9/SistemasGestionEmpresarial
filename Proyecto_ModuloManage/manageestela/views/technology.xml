@@ -1,5 +1,7 @@
 <odoo>
     <data>
+        <!-- explicit list view definition -->
+
         <record model="ir.ui.view" id="vista_manageestela_technology_tree">
             <field name="name">vista_manageestela_technology_tree</field>
             <field name="model">manageestela.technology</field>
@@ -22,7 +24,7 @@
                         <group name="group_top">
                             <field name="name" string="Nombre"/>
                             <field name="description" string="Descripción"/>
-                            <field name="image" string="Imagen"/>
+                            <field name="image" string="Imagen" widget="image"/>
                             <field name="task_id" string="ID Tarea"/>
                         </group>
                     </sheet>
@@ -30,11 +32,49 @@
             </field>
         </record>
 
+        <record id="vista_manageestela_technology_kanban" model="ir.ui.view">
+            <field name="name">vista_manageestela_technology_kanban</field>
+            <field name="model">manageestela.technology</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <field name="id"/>
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="image"/>
+                    <field name="task_id"/>
+
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_card">
+                                <div>
+                                    <img t-if="record.image.raw_value"
+                                         t-att-src="kanban_image('manageestela.technology', 'image', record.id.raw_value)"
+                                         class="oe_kanban_avatar"/>
+                                </div>
+                                <div class="oe_kanban_details">
+                                    <strong>
+                                        <field name="name"/>
+                                    </strong>
+                                    <div>
+                                        <field name="description"/>
+                                    </div>
+                                    <div>
+                                        <field name="task_id"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+
         <record model="ir.actions.act_window" id="accion_manageestela_technology_form">
-            <field name="name">Listado de proyectos</field>
+            <field name="name">Listado de tecnologias</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">manageestela.technology</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">kanban,tree,form</field>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
                     Tecnologias
@@ -43,6 +83,8 @@
                 </p>
             </field>
         </record>
+
+
         <!-- actions -->
         <menuitem name="Technology" id="menu_manageestela_technology"
                   parent="menu_manageestela_management"

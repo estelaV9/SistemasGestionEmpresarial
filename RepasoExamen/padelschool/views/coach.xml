@@ -1,0 +1,58 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="vista_padelschool_coach_tree">
+            <field name="name">vista_padelschool_coach_tree</field>
+            <field name="model">padelschool.coach</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" string="Nombre"/>
+                    <field name="last_name" string="Apellido"/>
+                    <field name="mail" string="Mail"/>
+                    <field name="phone" string="Telefono"/>
+                    <field name="course_coach_id" widget="one2many_tags" string="Cursos"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="vista_padelschool_coach_form" model="ir.ui.view">
+            <field name="name">vista_padelschool_coach_form</field>
+            <field name="model">padelschool.coach</field>
+            <field name="arch" type="xml">
+                <form string="Formulario de Monitores">
+                    <sheet>
+                        <group>
+                            <field name="name" string="Nombre"/>
+                            <field name="last_name" string="Apellido"/>
+                            <field name="mail" string="Mail"/>
+                            <field name="phone" string="Telefono"/>
+                            <field name="course_coach_id" widget="one2many_tags" string="Cursos"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="accion_padelschool_coach_form">
+            <field name="name">Listado de Monitores</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">padelschool.coach</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Gestiona tus monitores aquí.
+                </p>
+                <p>Haz clic en <strong>'Crear'</strong> para añadir nuevos monitores.
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="Padelschool" id="menu_padelschool_raiz"/>
+
+        <menuitem name="Padelschool" id="menu_padelschool_padelschool"
+                  parent="menu_padelschool_raiz"/>
+
+        <menuitem name="Coach" id="menu_padelschool_coach"
+                  parent="menu_padelschool_padelschool"
+                  action="accion_padelschool_coach_form"/>
+    </data>
+</odoo>

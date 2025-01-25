@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_padelschool_coach,padelschool.coach,model_padelschool_coach,base.group_user,1,1,1,1
+access_padelschool_student,padelschool.student,model_padelschool_student,base.group_user,1,1,1,1
+access_padelschool_school,padelschool.school,model_padelschool_school,base.group_user,1,1,1,1
+access_padelschool_course,padelschool.course,model_padelschool_course,base.group_user,1,1,1,1

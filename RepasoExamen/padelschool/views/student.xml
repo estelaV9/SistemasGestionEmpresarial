@@ -1,0 +1,53 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="vista_padelschool_student_tree">
+            <field name="name">vista_padelschool_student_tree</field>
+            <field name="model">padelschool.student</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" string="Nombre"/>
+                    <field name="last_name" string="Apellido"/>
+                    <field name="mail" string="Mail"/>
+                    <field name="phone" string="Telefono"/>
+                    <field name="course_id" widget="many2many_tags" string="Cursos matriculados"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="vista_padelschool_student_form" model="ir.ui.view">
+            <field name="name">vista_padelschool_student_form</field>
+            <field name="model">padelschool.student</field>
+            <field name="arch" type="xml">
+                <form string="Formulario de Tareas">
+                    <sheet>
+                        <group>
+                            <field name="name" string="Nombre"/>
+                            <field name="last_name" string="Apellido"/>
+                            <field name="mail" string="Mail"/>
+                            <field name="phone" string="Telefono"/>
+                            <field name="course_id" widget="many2many_tags" string="Cursos matriculados"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="accion_padelschool_student_form">
+            <field name="name">Listado de Tareas</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">padelschool.student</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Gestiona tus estudiantes aquí.
+                </p>
+                <p>Haz clic en <strong>'Crear'</strong> para añadir nuevos estudiantes.
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="Student" id="menu_padelschool_student"
+                  parent="menu_padelschool_padelschool"
+                  action="accion_padelschool_student_form"/>
+    </data>
+</odoo>

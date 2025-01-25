@@ -1,0 +1,54 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+
+        <record model="ir.ui.view" id="vista_manageestela_history_tree">
+            <field name="name">vista_manageestela_history_tree</field>
+            <field name="model">manageestela.history</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" string="Nombre"/>
+                    <field name="description" string="Descripción"/>
+                    <field name="project_id" string="Proyecto"/>
+                    <field name="task_history_id" string="Tarea ID"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="vista_manageestela_history_form" model="ir.ui.view">
+            <field name="name">vista_manageestela_history_form</field>
+            <field name="model">manageestela.history</field>
+            <field name="arch" type="xml">
+                <form string="formulario_history">
+                    <sheet>
+                        <group name="group_top">
+                            <field name="name" string="Nombre"/>
+                            <field name="description" string="Descripción"/>
+                            <field name="project_id" string="Proyecto"/>
+                            <field name="task_history_id" string="Tarea ID"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="accion_manageestela_history_form">
+            <field name="name">Listado de historial</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">manageestela.history</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Historial
+                </p>
+                <p>Click <strong>'Crear'</strong> para añadir nuevos elementos
+                </p>
+            </field>
+        </record>
+
+        <!-- actions -->
+        <menuitem name="History" id="menu_manageestela_history"
+                  parent="menu_manageestela_management"
+                  action="accion_manageestela_history_form"/>
+    </data>
+</odoo>

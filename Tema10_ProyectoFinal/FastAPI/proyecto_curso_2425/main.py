@@ -1,0 +1,28 @@
+from fastapi import FastAPI
+import uvicorn
+from app.routers import user
+from app.db.database import Base, engine
+
+# CREAR TODAS LAS TABLAS DEFINIDAS EN SQLAlchemy
+# VINCULA LA CREACION DE LAS TABLAS A LA BD
+def create_tables():
+    Base.metadata.create_all(bind=engine)
+
+# SE CREARAN SI NO EXISTE LA BD
+create_tables()
+
+# CREAMOS UNA INSTANCIA DE FASTAPI
+app = FastAPI()
+app.include_router(user.router)
+
+""" DOCUMENTACION AUTOMATICA DE FASTAPI
+    DESDE EL EXPLORADOR, INDICAMOS LA DIRECCION /docs PARA VER LA DOCUMENTACION
+    DE LA API QUE SE HA CREADO DE FORMA AUTOMATICA. 
+    AL PROBARLO, PODEMOS HACER CLIC EN "EXECUTE" PARA PROBAR LAS RUTAS. """
+
+if __name__ == "__main__":
+    # EJECUTAMOS EL SERVIDOR UVICORN EN EL PUERTO 8000 CON LA OPCION RELOAD ACTIVADA
+    uvicorn.run("main:app", port=8000, reload=True)
+
+# EL PARAMETRO "RELOAD" PERMITE RECARGAR EL CONTEXTO DEL SERVIDOR CADA VEZ QUE
+# SE CAMBIE ALGO EN EL ARCHIVO main.py (CUANDO PULSEMOS CTRL+S).

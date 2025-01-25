@@ -4,18 +4,26 @@
             <field name="name">Manageestela developer window</field>
             <field name="res_model">res.partner</field>
             <field name="view_mode">tree,form</field>
+            <field name="domain">[('is_dev', '=', True)]</field>
         </record>
 
         <!-- VISTA PERSONALIZADA -->
         <record model="ir.ui.view" id="manageestela.devs_partner_form">
             <field name="name">Manageestela devs form</field>
             <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"></field>
+            <field name="mode">primary</field>
             <field name="arch" type="xml">
-                <form>
-                    <group>
-                        <field name="technologies_id" string="Tecnologias"/>
-                    </group>
-                </form>
+                <xpath expr="//sheet/notebook/page[@name='internal_notes']" position="after">
+                    <page name="devs" string="Devs">
+                        <group>
+                            <group>
+                                <field name="technologies_id" string="Tecnologías"/>
+                                <field name="is_dev"/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
             </field>
         </record>
 
