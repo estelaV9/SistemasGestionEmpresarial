@@ -1,20 +1,27 @@
 package com.example.cubexshop
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.cubexshop.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    lateinit var miBinding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+
+        miBinding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(miBinding.root)
+
+        miBinding.startBtt.setOnClickListener {
+            // CREA UN INTENT PARA ABRIR EL LoginActivity
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)  // LO ABRE
+        } // CUANDO PULSE EL BOTON START, ABRIRA LA VENTANA DE LOGIN
     }
 }
