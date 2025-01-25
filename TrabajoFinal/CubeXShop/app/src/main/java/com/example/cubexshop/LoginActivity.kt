@@ -1,5 +1,6 @@
 package com.example.cubexshop
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -14,5 +15,11 @@ class LoginActivity : AppCompatActivity() {
 
         miBinding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(miBinding.root)
+        
+        miBinding.SignUpTV.setOnClickListener{
+            // CREA UN INTENT PARA ABRIR EL SignUpActivity
+            val intent = Intent(this, SignUpActivity::class.java)
+            startActivity(intent)
+        } // SI NO TIENE CUENTA, SE VA A LA PANTALLA DEL SIGNUP
     }
 }
