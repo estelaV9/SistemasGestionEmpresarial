@@ -3,4 +3,10 @@
     <string name="name_app">CubeX Galaxy Shopping App</string>
     <string name="start">START</string>
     <string name="description_image_logo">imagen del logo de la app</string>
+    <string name="login">LOGIN</string>
+    <string name="i_forgot_my_password">I forgot my password</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="please_fill_in_the_fields">Please fill in the fields</string>
+    <string name="welcome">Welcome</string>
 </resources>

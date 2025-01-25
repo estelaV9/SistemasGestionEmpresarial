@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_blur"
+    tools:context=".LoginActivity">
+
+    <ImageView
+        android:layout_width="139dp"
+        android:layout_height="111dp"
+        android:contentDescription="@string/description_image_logo"
+        android:src="@drawable/logo_without_borders"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/login"
+        app:layout_constraintHorizontal_bias="0.725"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.138" />
+
+    <TextView
+        android:id="@+id/login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/jollylodger_regular"
+        android:shadowColor="@color/black"
+        android:shadowDx="30"
+        android:shadowDy="4"
+        android:shadowRadius="5"
+        android:text="@string/login"
+        android:textAlignment="center"
+        android:textColor="@color/light_green"
+        android:textSize="110sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.71"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.129" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="-16dp"
+        android:backgroundTint="@color/light_green"
+        app:cardCornerRadius="28dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="28dp">
+
+            <TextView
+                android:id="@+id/labelWelcomeTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/welcome"
+                android:textColor="@color/dark_green"
+                android:textSize="42sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/labelFillTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="40dp"
+                android:alpha="0.7"
+                android:text="@string/please_fill_in_the_fields"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/labelEmailTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:alpha="0.7"
+                android:text="@string/email"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/emailET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:autofillHints="Email field"
+                android:drawableEnd="@drawable/email"
+                android:inputType="textEmailAddress"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/labelPassTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:alpha="0.7"
+                android:text="@string/password"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/passwordET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="Password field"
+                android:drawableEnd="@drawable/email"
+                android:inputType="textPassword"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/forgotPassTV"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:alpha="0.7"
+                android:text="@string/i_forgot_my_password"
+                android:textAlignment="textEnd"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/loginBtt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="170dp"
+                android:layout_marginBottom="30dp"
+                android:backgroundTint="@color/dark_green"
+                android:fontFamily="@font/jollylodger_regular"
+                android:text="@string/login"
+                android:textColor="@color/light_green"
+                android:textSize="40sp"
+                app:layout_constraintVertical_bias="0.522"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
