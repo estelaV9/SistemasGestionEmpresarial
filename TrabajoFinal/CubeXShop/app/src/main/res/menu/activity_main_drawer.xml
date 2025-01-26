@@ -1,0 +1,28 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- OPCION HOME -->
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/email"
+        android:title="@string/home" />
+
+    <!-- OPCION ELIMINAR CUENTA -->
+    <item
+        android:id="@+id/nav_delete_account"
+        android:icon="@drawable/ic_delete"
+        android:title="@string/eliminar_cuenta" />
+
+    <!-- DIVIDER -->
+    <group>
+        <item
+            android:title="@string/otras_opciones">
+            <menu>
+                <item
+                    android:id="@+id/nav_logout"
+                    android:icon="@drawable/ic_logout"
+                    android:title="@string/log_out" />
+            </menu>
+        </item>
+    </group>
+
+</menu>
