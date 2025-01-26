@@ -18,7 +18,7 @@ class UserDAO(context: Context) {
         // AGREGAMOS VALORES A LA BASE DE DATOS
         values.put("username", user.name)
         values.put("mail", user.email)
-        values.put("password", user.password)
+        values.put("password_user", user.password)
         values.put("registration_date", user.registrationDate.toString())
 
         // SE INSERTA EL USUARIO
@@ -31,7 +31,7 @@ class UserDAO(context: Context) {
         val db = dbHelper.readableDatabase // BASE DE DATOS EN MODO LECTURA
         val cursor = db.query(
             "users", null,
-            "mail = ? AND password = ?",
+            "mail = ? AND password_user = ?",
             arrayOf(email, password),
             null, null, null
         ) // CONSULTA PARA OBTENER EL USUARIO POR CORREO Y CONTRASEÑA
@@ -41,7 +41,7 @@ class UserDAO(context: Context) {
             val id = cursor.getInt(cursor.getColumnIndexOrThrow("user_id"))
             val name = cursor.getString(cursor.getColumnIndexOrThrow("username"))
             val registrationDate = LocalDate.parse(
-                cursor.getString(cursor.getColumnIndexOrThrow("registration_Date")),
+                cursor.getString(cursor.getColumnIndexOrThrow("registration_date")),
                 DateTimeFormatter.ISO_DATE
             )
             user = User(id, name, email, password, registrationDate) // CREA EL OBJETO DEVUELTO
