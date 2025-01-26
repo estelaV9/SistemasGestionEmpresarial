@@ -6,4 +6,10 @@
     </style>
 
     <style name="Theme.CubeXShop" parent="Base.Theme.CubeXShop" />
+    <style name="Theme.CubeXShop.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.CubeXShop.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.CubeXShop.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
