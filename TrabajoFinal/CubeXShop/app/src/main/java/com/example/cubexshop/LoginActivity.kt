@@ -41,7 +41,7 @@ class LoginActivity : AppCompatActivity() {
                     Toast.LENGTH_SHORT).show()
 
                 // NAVEGAR A LA SIGUIENTE PANTALLA
-                val intent = Intent(this, MainActivity::class.java)
+                val intent = Intent(this, HomePageActivity::class.java)
                 startActivity(intent)
                 finish()
             } else {
