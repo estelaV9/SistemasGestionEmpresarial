@@ -17,6 +17,7 @@ import java.time.LocalDate
 class SignUpActivity : AppCompatActivity() {
     lateinit var miBinding: ActivitySignupBinding
     private lateinit var userDAO: UserDAO
+    private lateinit var dbHelper: DatabaseHelper
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,6 +28,8 @@ class SignUpActivity : AppCompatActivity() {
         setContentView(miBinding.root)
 
         userDAO = UserDAO(this) // SE INCIALIZA EL DAO
+        dbHelper = DatabaseHelper(this) // SE INICIALIZA EL HELPER
+
 
         miBinding.LoginTV.setOnClickListener {
             // CREA UN INTENT PARA ABRIR EL LoginActivity
