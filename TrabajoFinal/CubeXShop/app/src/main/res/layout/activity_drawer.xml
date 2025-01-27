@@ -5,6 +5,7 @@
     android:layout_height="200dp"
     android:background="@color/light_green"
     android:orientation="vertical"
+    android:gravity="bottom"
     android:padding="16dp">
 
     <!-- NOMBRE DEL USUARIO -->
@@ -13,8 +14,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Nombre Usuario"
-        android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textAlignment="textEnd"
+        android:textColor="@color/dark_green"
+        android:textSize="35sp"
         android:fontFamily="sans-serif-medium" />
 
     <!-- EMAIL DEL USUARIO -->
@@ -23,8 +25,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="email@ejemplo.com"
-        android:textColor="@color/white"
-        android:textSize="16sp"
+        android:textColor="@color/dark_green"
+        android:textSize="22sp"
         android:fontFamily="sans-serif" />
 
 </LinearLayout>
