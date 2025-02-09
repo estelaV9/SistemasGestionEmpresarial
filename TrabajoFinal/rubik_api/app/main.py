@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 import uvicorn
-from app.routers import user, cube, solve_time
+from app.routers import user, cube, solve_time, auth
 from app.db.database import Base, engine
 
 # FUNCION PARA CREAR LAS TABLAS DEFINIDAS EN LOS MODELOS
@@ -18,6 +18,7 @@ app = FastAPI(
 )
 
 # INCLUIMOS LAS RUTAS DE USUARIO, CUBOS Y TIEMPOS
+app.include_router(auth.router)
 app.include_router(user.router)
 app.include_router(cube.router)
 app.include_router(solve_time.router)
