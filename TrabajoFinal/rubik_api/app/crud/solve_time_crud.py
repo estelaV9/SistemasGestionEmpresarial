@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from sqlalchemy.orm import Session
 from app.models.solve_time import SolveTime
 from app.schemas.solve_time import SolveTimeCreate
@@ -5,7 +7,7 @@ from app.schemas.solve_time import SolveTimeCreate
 # CREAR UN NUEVO TIEMPO
 def create_solve_time(db: Session, solve_time: SolveTimeCreate):
     db_solve_time = SolveTime(time_seconds=solve_time.time_seconds,
-                               date=solve_time.date,
+                               date=datetime.utcnow(),
                                cube_id=solve_time.cube_id,
                                user_id=solve_time.user_id)
     db.add(db_solve_time)
@@ -26,7 +28,7 @@ def update_solve_time(db: Session, solve_time_id: int, solve_time: SolveTimeCrea
     db_solve_time = db.query(SolveTime).filter(SolveTime.id == solve_time_id).first()
     if db_solve_time:
         db_solve_time.time_seconds = solve_time.time_seconds
-        db_solve_time.date = solve_time.date
+        db_solve_time.date = datetime.utcnow()
         db_solve_time.cube_id = solve_time.cube_id
         db_solve_time.user_id = solve_time.user_id
         db.commit()
