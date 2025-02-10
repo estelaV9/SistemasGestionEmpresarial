@@ -1,13 +1,16 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from app.db.database import get_db
+from app.routers.auth import get_current_user
 from app.schemas.solve_time import SolveTimeCreate, SolveTimeResponse
 from app.crud.solve_time_crud import create_solve_time, get_solve_time, get_solve_times, update_solve_time, \
     delete_solve_time
 
 router = APIRouter(
     prefix="/solve-times",
-    tags=["SolveTimes"]
+    tags=["SolveTimes"],
+    # PROTEGER LAS RUTAS DE ESTE ROUTER
+    dependencies=[Depends(get_current_user)]
 )
 
 # OBTENER TODOS LOS TIEMPOS

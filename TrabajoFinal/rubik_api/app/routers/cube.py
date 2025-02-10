@@ -3,10 +3,14 @@ from sqlalchemy.orm import Session
 from app.db.database import get_db
 from app.schemas.cube import CubeCreate, CubeResponse
 from app.crud.cube_crud import create_cube, get_cube, get_cubes, update_cube, delete_cube
+from app.routers.auth import get_current_user
+
 
 router = APIRouter(
     prefix="/cubes",
-    tags=["Cubes"]
+    tags=["Cubes"],
+    # PROTEGER LAS RUTAS DE ESTE ROUTER
+    dependencies=[Depends(get_current_user)]
 )
 
 # OBTENER TODOS LOS CUBOS
