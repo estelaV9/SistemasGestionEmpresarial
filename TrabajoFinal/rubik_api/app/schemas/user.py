@@ -1,6 +1,5 @@
 from pydantic import BaseModel, EmailStr
 from typing import Optional
-from datetime import datetime
 
 # DEFINIR pydantic PARA TRABAJAR CON LOS DATOS
 """ ********** USER MODEL *************** """

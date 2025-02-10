@@ -7,7 +7,7 @@ from app.db.database import Base, engine
 def create_tables():
     Base.metadata.create_all(bind=engine)  # CREA LAS TABLAS SI NO EXISTEN
 
-# LLAMADA A LA FUNCIÓN PARA ASEGURARSE DE QUE LAS TABLAS SE CREAN AL INICIAR LA API
+# CREAR TABLAS AL INICIAR LA API
 create_tables()
 
 # INSTANCIA PRINCIPAL DE LA API
@@ -23,12 +23,8 @@ app.include_router(user.router)
 app.include_router(cube.router)
 app.include_router(solve_time.router)
 
-# DOCUMENTACIÓN AUTOMÁTICA DISPONIBLE EN /docs Y /redoc
-# /docs = Swagger UI | /redoc = Redoc UI
 
 # PUNTO DE ENTRADA PRINCIPAL
 if __name__ == "__main__":
-    # EJECUTAMOS EL SERVIDOR UVICORN EN EL PUERTO 8000 CON RECARGA AUTOMÁTICA
+    # EJECUTAMOS EL SERVIDOR UVICORN EN EL PUERTO 8000 CON RECARGA AUTOMATICA
     uvicorn.run("app.main:app", host="127.0.0.1", port=8000, reload=True)
-
-# EL PARÁMETRO "reload=True" HACE QUE EL SERVIDOR SE ACTUALICE AUTOMÁTICAMENTE CUANDO GUARDAS CAMBIOS
