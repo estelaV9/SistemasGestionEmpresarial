@@ -10,7 +10,7 @@ class User(Base):
     # COLUMNAS DE LA TABLA USERS
     id = Column(Integer, primary_key=True, index=True)  # ID UNICO DEL USUARIO
     username = Column(String, unique=True, index=True, nullable=False)  # NOMBRE DE USUARIO UNICO
-    email = Column(String, unique=True, index=True, nullable=False)  # EMAIL UNICO
+    email = Column(String, unique=True, index=True, nullable=False, default=None)  # EMAIL UNICO
     password = Column(String, nullable=False)  # CONTRASEÑA
 
     # RELACIONES
