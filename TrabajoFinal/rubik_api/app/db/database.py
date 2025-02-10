@@ -2,7 +2,7 @@
 from sqlalchemy import create_engine
 
 # CLASE BASE PARA DEFINIR MODELOS DE TABLAS DE BD EN SQLAlchemy
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import declarative_base
 
 # CLASE QUE CREA OBJETOS PARA MANEJAR SESIONES CON LA BD
 from sqlalchemy.orm import sessionmaker
