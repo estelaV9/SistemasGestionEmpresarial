@@ -4,13 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.cubexshop.database.DatabaseHelper
+import com.example.cubexshop.activity.LoginActivity
 import com.example.cubexshop.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    lateinit var miBinding: ActivityMainBinding
+    private lateinit var miBinding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

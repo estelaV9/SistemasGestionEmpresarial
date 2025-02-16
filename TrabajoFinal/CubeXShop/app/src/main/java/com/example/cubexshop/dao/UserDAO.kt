@@ -1,5 +1,6 @@
 package com.example.cubexshop.dao
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Build
 import androidx.annotation.RequiresApi
@@ -8,7 +9,7 @@ import com.example.cubexshop.model.User
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
-class UserDAO(context: Context) {
+class UserDAO(private val context: Context) {
     private val dbHelper = DatabaseHelper(context)
 
     fun addUser(user: User): Long {
@@ -49,4 +50,47 @@ class UserDAO(context: Context) {
         cursor.close() // CIERRA EL CURSOR
         return user // DEVUELVE SI EXISTE EL USUARIO O NO
     } // METODO PARA BUSCAR UN USUARIO POR MAIL Y CONTRASEÑA
+
+    fun updateUser(user: User): Int {
+        val db = dbHelper.writableDatabase
+        val values = android.content.ContentValues()
+
+        // SE AGREGAN LOS VALORES A ACTUALIZAR
+        values.put("username", user.name)
+        values.put("password_user", user.password)
+        if (!user.profileImage.isNullOrEmpty()) {
+            // SE AGREGA IMAGEN
+            values.put("profile_image", user.profileImage)
+        }
+
+        // SE EJECUTA LA ACTUALIZACION FILTRANDO POR CORREO
+        return db.update("users", values, "mail = ?", arrayOf(user.email))
+    } // METODO PARA ACUTLAIZAR LOS DATOS DEL USUARIO
+
+    @SuppressLint("NewApi")
+    fun getLoggedUser(): User? {
+        // OBTIENE LAS PREFERENCIAS COMPARTIDAS PARA OBTENER LOS DATOS DEL USUARIO
+        val sharedPreferences = context.getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
+
+        val email = sharedPreferences.getString("user_email", null)
+        val password = sharedPreferences.getString("user_password", null)
+        val idUser = sharedPreferences.getInt("user_id", -1)
+        val name = sharedPreferences.getString("user_name", null)
+        val profileImage = sharedPreferences.getString("user_profile_image", null)
+
+        return if (email != null && password != null && name != null) {
+            // SI NO SON NULOS, CREA UN OBJETO USER
+            User(idUser, name, email, password, LocalDate.now(), profileImage)
+        } else {
+            // SINO RETONA NULL
+            null
+        } // VERIFICA SI TODOS LOS DATOS SON NULOS O NO
+    } // METODO PARA CONSEGUIR LOS DATOS DEL USUARIO
+
+    fun deleteUser(email: String): Int {
+        // OBTIENE UNA REFERENCIA A LA BASE DE DATOS EN MODO ESCRITURA
+        val db = dbHelper.writableDatabase
+        // ELIMINA SEGUN EL MAIL
+        return db.delete("users", "mail = ?", arrayOf(email))
+    } // METODO PARA ELIMINAR EL USUARIO
 }

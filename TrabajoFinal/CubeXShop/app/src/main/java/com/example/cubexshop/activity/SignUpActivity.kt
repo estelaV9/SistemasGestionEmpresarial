@@ -1,4 +1,4 @@
-package com.example.cubexshop
+package com.example.cubexshop.activity
 
 import android.content.Intent
 import android.os.Build
@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import com.example.cubexshop.HomePageActivity
 import com.example.cubexshop.dao.UserDAO
 import com.example.cubexshop.database.DatabaseHelper
 import com.example.cubexshop.databinding.ActivitySignupBinding
@@ -71,15 +72,27 @@ class SignUpActivity : AppCompatActivity() {
                 val userId = userDAO.addUser(user) // GUARDAMOS EN LA BASE DE DATOS
 
                 if (userId != -1L) {
-                    Toast.makeText(this, "Usuario creado con exito",
-                        Toast.LENGTH_SHORT).show()
-                    /**** ir a la pagina principal ***/
-                } else {
-                    Toast.makeText(this, "Error al crear el usuario",
-                        Toast.LENGTH_SHORT).show()
-                } // MOSTRAMOS UN TOAST DEPENDIENDO SI SE GUARDO BIEN
-            } // SI TODOS LOS CAMPOS SON CORRECTOS, LO GUARDAMOS EN LA BD
+                    Toast.makeText(this, "Usuario creado con éxito", Toast.LENGTH_SHORT).show()
 
+                    // GUARDAMOS LOS DATOS DEL USUARIO EN SharedPreferences
+                    val sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE)
+                    val editor = sharedPreferences.edit()
+
+                    editor.putString("user_email", user.email)
+                    editor.putString("user_password", user.password)
+                    editor.putInt("user_id", user.idUser ?: -1) // SI EL ID ES NULL, GUARDAMOS -1
+                    editor.putString("user_name", user.name)
+                    editor.putString("user_profile_image", user.profileImage)
+                    editor.apply()
+
+                    // REDIRIGIR A LA PANTALLA PRINCIPAL
+                    val intent = Intent(this, HomePageActivity::class.java)
+                    startActivity(intent)
+                    finish() // FINALIZAMOS ACTIVIDAD
+                } else {
+                    Toast.makeText(this, "Error al crear el usuario", Toast.LENGTH_SHORT).show()
+                } // MOSTRAMOS UN TOAST DEPENDIENDO SI SE GUARDÓ BIEN
+            } // SI TODOS LOS CAMPOS SON CORRECTOS, LO GUARDAMOS EN LA BD
         } // CUANDO PULSE EL BOTON DE SIGNUP, SE VALIDARAN LOS CAMPOS
     }
 

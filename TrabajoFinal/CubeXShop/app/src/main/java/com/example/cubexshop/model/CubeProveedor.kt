@@ -2,7 +2,7 @@ package com.example.cubexshop.model
 
 import com.example.cubexshop.R
 
-public class CubeProveedor {
+class CubeProveedor {
     companion object{
         private val cubes = mutableListOf(Cube("GAN 356 XS", "Un cubo 3x3 magnético de alta gama con ajustes avanzados.", "GAN", null, R.drawable.gan_356_xs),
             Cube("GAN 11 M Pro", "Cubo 3x3 de GAN con núcleo magnético y gran estabilidad.", "GAN", null,R.drawable.gan_11_m_pro),
@@ -21,12 +21,10 @@ public class CubeProveedor {
             Cube("Yuxin Little Magic Pyraminx", "Pyraminx económico y de buen rendimiento.", "Yuxin", null,R.drawable.yuxin_little_magic_pyraminx)
            )
 
-
         fun getCubes(): List<Cube> = cubes
 
         fun addCube(cube: Cube) {
             cubes.add(cube)
         }
-
     }
 }

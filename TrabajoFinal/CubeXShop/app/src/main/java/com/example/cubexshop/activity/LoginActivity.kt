@@ -1,4 +1,4 @@
-package com.example.cubexshop
+package com.example.cubexshop.activity
 
 import android.content.Intent
 import android.os.Build
@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import com.example.cubexshop.HomePageActivity
 import com.example.cubexshop.dao.UserDAO
 import com.example.cubexshop.databinding.ActivityLoginBinding
 
@@ -41,6 +42,18 @@ class LoginActivity : AppCompatActivity() {
                     Toast.LENGTH_SHORT).show()
 
                 // NAVEGAR A LA SIGUIENTE PANTALLA
+                // GUARDAR LOS DATOS DEL USUARIO CON SharedPreferences
+                val sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE)
+                val editor = sharedPreferences.edit()
+
+                editor.putString("user_email", user.email)
+                editor.putString("user_password", user.password)
+                editor.putInt("user_id", user.idUser ?: -1) // SI EL ID ES NULL, GUARDAMOS -1
+                editor.putString("user_name", user.name)
+                editor.putString("user_profile_image", user.profileImage)
+                editor.apply()
+
+                // PANTALLA PRINCIPAL
                 val intent = Intent(this, HomePageActivity::class.java)
                 startActivity(intent)
                 finish()
