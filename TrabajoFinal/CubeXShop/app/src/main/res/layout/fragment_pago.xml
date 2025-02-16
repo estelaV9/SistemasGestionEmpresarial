@@ -1,0 +1,50 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/checkoutTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Detalles de Pago"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/cardNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Número de Tarjeta"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/cardExpiry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Fecha de Expiración (MM/AA)"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/cardCVC"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Código CVC"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/shippingAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Dirección de Envío"
+        android:inputType="textPostalAddress" />
+
+    <Button
+        android:id="@+id/payButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pagar"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/medium_green"/>
+</LinearLayout>
